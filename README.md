@@ -10,4 +10,4 @@ machine learning model, from notebook to completed package.
 * `notebooks/`: development notebooks 
 * `src/`: actual production code with invoke service
 * `docs/`: sphinx docs
-
+* `test/`: python package tests 
