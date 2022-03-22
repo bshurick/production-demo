@@ -7,6 +7,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.base import BaseEstimator, TransformerMixin
 
 from production_demo.constants import (CATEGORIES,
+                                       MODEL_PARAMS,
                                        NUMERICS,
                                        OUTPUT)
 
@@ -37,7 +38,7 @@ def handler():
     hct = CategoriesTransformer(CATEGORIES)
     model = Pipeline([
       ('hash', hct),
-      ('LGBM', LGBMRegressor(random_state=22)),
+      ('LGBM', LGBMRegressor(**MODEL_PARAMS)),
     ])
     model.fit(train[NUMERICS], train[OUTPUT])
     dump(model, "./data/trained_model")

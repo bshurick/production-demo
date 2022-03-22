@@ -84,3 +84,7 @@ NUMERICS = [
 ]
 
 OUTPUT = 'SalePrice'
+
+MODEL_PARAMS = {
+    
+}
