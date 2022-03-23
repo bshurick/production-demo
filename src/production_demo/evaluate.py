@@ -24,6 +24,7 @@ logger = logging.getLogger(__name__)
 
 
 def handler():
+    """Main entry point for model evaluate script"""
     logger.info("Loading train data")
     train = pd.read_csv("./data/train.csv")
 

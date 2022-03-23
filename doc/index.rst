@@ -6,11 +6,19 @@
 Welcome to ProductionDemo's documentation!
 ==========================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+.. autosummary::
 
+.. automodule:: production_demo.train
+   :members:
 
+.. automodule:: production_demo.evaluate
+   :members:
+
+.. automodule:: production_demo.service
+   :members:
+
+.. automodule:: production_demo.constants
+   :members:
 
 Indices and tables
 ==================
