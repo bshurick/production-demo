@@ -12,9 +12,9 @@ from production_demo.constants import (CATEGORIES,
                                        OUTPUT)
 
 
-# custom transformer for categories
 class CategoriesTransformer(BaseEstimator, TransformerMixin):
-   
+    """ Custom transformer for categories """
+
     @staticmethod
     def hash_col(x, n_buckets=100000):
         return int(hashlib.md5(str(x).encode('utf-8')).hexdigest(), 16) % n_buckets
@@ -34,11 +34,20 @@ class CategoriesTransformer(BaseEstimator, TransformerMixin):
 
 
 def handler():
+    """ Main entry point for model training """
+
+    # load training data
     train = pd.read_csv('./data/train.csv')
+
+    # create model artifacts 
     hct = CategoriesTransformer(CATEGORIES)
     model = Pipeline([
       ('hash', hct),
       ('LGBM', LGBMRegressor(**MODEL_PARAMS)),
     ])
-    model.fit(train[NUMERICS], train[OUTPUT])
+
+    # train model
+    model.fit(train[NUMERICS + CATEGORIES], train[OUTPUT])
+
+    # serialize trained model artifacts
     dump(model, "./data/trained_model")
