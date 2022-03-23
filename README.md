@@ -19,7 +19,7 @@ machine learning model, from notebook to completed package.
 4. `source bin/activate`  
 5. `pip install . tox`  
 
-Build test with `tox`.
+Run build and unit tests with `tox`.
 
 To run train, copy [House Prices dataset from Kaggle](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data)
 and unzip into data/ folder, run `bin/HouseTrain`.
