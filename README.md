@@ -25,15 +25,19 @@ This invoke service is meant to be adapted into a
 2. `cd production-demo`  
 3. `python3 -m venv .`  
 4. `source bin/activate`  
-5. `pip install . tox`  
+5. `pip install .`  
 
 ### Build testing 
-Run build and unit tests with `tox`. After running, 
-check test coverage HTML in `build/coverage/index.html`. 
+Install tox with `pip install tox`; 
+run build and unit tests using the `tox` command.  
+After running, 
+check the test coverage HTML table in `build/coverage/index.html`. 
 
 ### Training 
-To run train, copy [House Prices dataset from Kaggle](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data)
-and unzip into data/ folder, then run `bin/HouseTrain`.
+To run train after building, copy the
+[House Prices dataset from Kaggle](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data)
+and unzip into a data/ folder in the package root directory;
+then, run `bin/HouseTrain`.
 
 ### Evaluation 
 Run `bin/HouseEval` to run cross validation and emit results as logs. 
