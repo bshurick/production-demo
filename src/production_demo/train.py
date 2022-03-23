@@ -17,7 +17,7 @@ class CategoriesTransformer(BaseEstimator, TransformerMixin):
    
     @staticmethod
     def hash_col(x, n_buckets=100000):
-        return int(hashlib.md5(x.encode('utf-8')).hexdigest(), 16) % n_buckets
+        return int(hashlib.md5(str(x).encode('utf-8')).hexdigest(), 16) % n_buckets
     
     def __init__(self, category_cols: list):
         self.category_cols = category_cols
