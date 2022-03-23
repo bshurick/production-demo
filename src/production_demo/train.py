@@ -12,7 +12,8 @@ from production_demo.constants import CATEGORIES, MODEL_PARAMS, NUMERICS, OUTPUT
 
 # set up logging format
 logging.basicConfig(
-    level=logging.INFO, format="%(levelname)s %(asctime)-15s: %(funcName)s:%(lineno)d: %(message)s"
+    level=logging.INFO,
+    format="%(levelname)s %(asctime)-15s: %(funcName)s:%(lineno)d: %(message)s",
 )
 
 logger = logging.getLogger(__name__)

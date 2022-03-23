@@ -60,3 +60,5 @@ MODEL_PARAMS = {
     "LGBM__reg_lambda": 795.5697908590797,
     "LGBM__subsample": 0.9850671378256838,
 }
+
+EVAL_SPLITS = 5

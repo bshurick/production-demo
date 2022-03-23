@@ -8,7 +8,7 @@ from production_demo.constants import CATEGORIES, NUMERICS, MODEL_PARAMS, OUTPUT
 from unittest.mock import MagicMock, call, ANY
 
 
-def test_eval_handler(monkeypatch):
+def test_train_handler(monkeypatch):
     # GIVEN
     mock_pandas = MagicMock()
     mock_pipeline = MagicMock()
@@ -21,6 +21,7 @@ def test_eval_handler(monkeypatch):
     handler()
 
     # THEN
+    # Ensure data is loaded and it collects the correct inputs and outputs
     assert mock_pandas.mock_calls == [
         # read CSV
         call(ANY),
@@ -29,6 +30,8 @@ def test_eval_handler(monkeypatch):
         # get y
         call().__getitem__(OUTPUT),
     ]
+
+    # Ensure a pipeline model is created and fitted
     assert mock_pipeline.mock_calls == [
         # create pipeline
         call(ANY),
@@ -40,6 +43,8 @@ def test_eval_handler(monkeypatch):
             mock_pandas().__getitem__(OUTPUT),
         ),
     ]
+
+    # Ensure model artifacts are saved at the end
     assert mock_dump.mock_calls == [
         # dump model artifacts
         call(mock_pipeline(), ANY)
