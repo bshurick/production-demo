@@ -5,7 +5,7 @@ from sklearn.model_selection import TimeSeriesSplit
 
 from production_demo import evaluate
 from production_demo.evaluate import handler
-from production_demo.constants import MODEL_PARAMS, EVAL_SPLITS
+from production_demo.constants import CATEGORIES, NUMERICS, MODEL_PARAMS, EVAL_SPLITS, OUTPUT
 
 from unittest.mock import MagicMock, call, ANY
 
@@ -37,8 +37,8 @@ def test_eval_handler(monkeypatch):
     assert mock_cv.mock_calls[:1] == [
         call(
             estimator=mock_pipeline(),
-            X=ANY,
-            y=ANY,
+            X=mock_pandas().__getitem__(NUMERICS + CATEGORIES),
+            y=mock_pandas().__getitem__(OUTPUT),
             cv=tss,
             n_jobs=-1,
             scoring="neg_mean_squared_log_error",
