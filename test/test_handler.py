@@ -1,9 +1,6 @@
 import pandas as pd
 import pytest
 
-from lightgbm import LGBMRegressor
-from sklearn.pipeline import Pipeline
-
 from production_demo import train
 from production_demo.train import handler
 from production_demo.constants import CATEGORIES, NUMERICS, MODEL_PARAMS, OUTPUT
@@ -11,7 +8,7 @@ from production_demo.constants import CATEGORIES, NUMERICS, MODEL_PARAMS, OUTPUT
 from unittest.mock import MagicMock, call, ANY
 
 
-def test_train_handler(monkeypatch):
+def test_eval_handler(monkeypatch):
     # GIVEN
     mock_pandas = MagicMock()
     mock_pipeline = MagicMock()

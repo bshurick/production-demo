@@ -1,4 +1,5 @@
 import hashlib
+import logging
 import pandas as pd
 
 from joblib import dump
@@ -7,6 +8,14 @@ from sklearn.pipeline import Pipeline
 from sklearn.base import BaseEstimator, TransformerMixin
 
 from production_demo.constants import CATEGORIES, MODEL_PARAMS, NUMERICS, OUTPUT
+
+
+# set up logging format
+logging.basicConfig(
+    level=logging.INFO, format="%(levelname)s %(asctime)-15s: %(funcName)s:%(lineno)d: %(message)s"
+)
+
+logger = logging.getLogger(__name__)
 
 
 class CategoriesTransformer(BaseEstimator, TransformerMixin):
@@ -35,9 +44,11 @@ def handler():
     """Main entry point for model training"""
 
     # load training data
+    logger.info("Loading data")
     train = pd.read_csv("./data/train.csv")
 
     # create model artifacts
+    logger.info("Set up training pipeline")
     hct = CategoriesTransformer(CATEGORIES)
     model = Pipeline(
         [
@@ -48,7 +59,9 @@ def handler():
     model.set_params(**MODEL_PARAMS)
 
     # train model
+    logger.info("Training model...")
     model.fit(train[NUMERICS + CATEGORIES], train[OUTPUT])
 
     # serialize trained model artifacts
+    logger.info("Save model artifacts")
     dump(model, "./data/trained_model")
