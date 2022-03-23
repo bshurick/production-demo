@@ -49,14 +49,14 @@ NUMERICS = [
 OUTPUT = "SalePrice"
 
 MODEL_PARAMS = {
-    "LGBM__colsample_bytree": 0.4569053964451767,
-    "LGBM__learning_rate": 0.060215823699935396,
-    "LGBM__max_depth": 10,
-    "LGBM__min_child_weight": 0.06494958890542044,
-    "LGBM__min_split_gain": 0.05643039388402624,
-    "LGBM__n_estimators": 354,
-    "LGBM__num_leaves": 3192,
-    "LGBM__reg_alpha": 260.8146685873852,
-    "LGBM__reg_lambda": 101.43819465504578,
-    "LGBM__subsample": 0.4382540932521588,
+    "LGBM__colsample_bytree": 0.21632103987213563,
+    "LGBM__learning_rate": 0.5546717160572604,
+    "LGBM__max_depth": 18,
+    "LGBM__min_child_weight": 0.054250372198719046,
+    "LGBM__min_split_gain": 0.027858070219366916,
+    "LGBM__n_estimators": 727,
+    "LGBM__num_leaves": 1428,
+    "LGBM__reg_alpha": 436.165959910646,
+    "LGBM__reg_lambda": 2103.9970558771543,
+    "LGBM__subsample": 0.1723976216520799,
 }
