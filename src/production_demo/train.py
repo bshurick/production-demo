@@ -16,8 +16,9 @@ class CategoriesTransformer(BaseEstimator, TransformerMixin):
     def hash_col(x, n_buckets=100000):
         return int(hashlib.md5(str(x).encode("utf-8")).hexdigest(), 16) % n_buckets
 
-    def __init__(self, category_cols: list):
+    def __init__(self, category_cols: list, n_buckets: int = 100000):
         self.category_cols = category_cols
+        self.n_buckets = n_buckets
 
     def fit(self, X, y=None):
         return self
@@ -26,7 +27,7 @@ class CategoriesTransformer(BaseEstimator, TransformerMixin):
         _X = X.copy()
         for c in self.category_cols:
             _X[c].fillna("", inplace=True)
-            _X[c] = _X[c].apply(self.hash_col)
+            _X[c] = _X[c].apply(lambda x: self.hash_col(x, self.n_buckets))
         return _X
 
 
