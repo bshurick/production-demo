@@ -49,5 +49,6 @@ def test_train_handler(monkeypatch):
                    mock_pandas().__getitem__(OUTPUT)),
     ]
     assert mock_dump.mock_calls == [
+        # dump model artifacts
         call(mock_pipeline(), ANY)
     ]
