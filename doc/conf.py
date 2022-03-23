@@ -1,0 +1,54 @@
+"""Sphinx configuration."""
+
+import datetime
+import os
+import shutil
+
+
+def run_apidoc(app):
+    """Generate doc stubs using sphinx-apidoc."""
+    module_dir = os.path.join(app.srcdir, "../src/")
+    output_dir = os.path.join(app.srcdir, "_apidoc")
+    excludes = []
+
+    # Ensure that any stale apidoc files are cleaned up first.
+    if os.path.exists(output_dir):
+        shutil.rmtree(output_dir)
+
+    cmd = [
+        "--separate",
+        "--module-first",
+        "--doc-project=API Reference",
+        "-o",
+        output_dir,
+        module_dir,
+    ]
+    cmd.extend(excludes)
+    from sphinx.ext import apidoc  # Sphinx >= 1.7
+
+
+def setup(app):
+    """Register our sphinx-apidoc hook."""
+    app.connect("builder-inited", run_apidoc)
+
+
+# Sphinx configuration below.
+extensions = [
+    "sphinx.ext.autodoc",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.todo",
+    "sphinx.ext.viewcode",
+]
+
+source_suffix = ".rst"
+master_doc = "index"
+
+autoclass_content = "class"
+autodoc_member_order = "bysource"
+default_role = "py:obj"
+
+html_theme = "haiku"
+htmlhelp_basename = "{}doc".format("ProductionDemo")
+
+napoleon_use_rtype = False
