@@ -7,18 +7,11 @@ Welcome to ProductionDemo's documentation!
 ==========================================
 
 .. autosummary::
+   :toctree:
 
-.. automodule:: production_demo.train
-   :members:
+   production_demo.train
+   production_demo.evaluate
 
-.. automodule:: production_demo.evaluate
-   :members:
-
-.. automodule:: production_demo.service
-   :members:
-
-.. automodule:: production_demo.constants
-   :members:
 
 Indices and tables
 ==================
