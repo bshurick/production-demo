@@ -9,7 +9,6 @@ CATEGORIES = [
     'Foundation',
     'Functional',
     'GarageCond',
-    'GarageFinish',
     'GarageQual',
     'GarageType',
     'Heating',
@@ -21,7 +20,6 @@ CATEGORIES = [
     'MSSubClass',
     'PavedDrive',
     'RoofStyle',
-    'SaleType'
 ]
 
 NUMERICS = [
@@ -33,12 +31,10 @@ NUMERICS = [
     'FullBath',
     'GarageArea',
     'GarageCars',
-    'GarageYrBlt',
     'GrLivArea',
     'HalfBath',
     'KitchenAbvGr',
     'LotArea',
-    'MoSold',
     'OpenPorchSF',
     'OverallCond',
     'OverallQual',
@@ -48,7 +44,6 @@ NUMERICS = [
     'WoodDeckSF',
     'YearBuilt',
     'YearRemodAdd',
-    'YrSold'
 ]
 
 OUTPUT = 'SalePrice'
