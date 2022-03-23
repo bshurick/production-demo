@@ -32,8 +32,8 @@ def handler():
 
     # log some metrics
     logger.info(train.shape)
-    logger.info(train[CATEGORIES + NUMERICS].shape)
-    logger.info(train[CATEGORIES + NUMERICS].head().to_markdown())
+    logger.info(train[NUMERICS + CATEGORIES].shape)
+    logger.info(train[NUMERICS + CATEGORIES].head().to_markdown())
     logger.info(train[NUMERICS + [OUTPUT]].describe().T.to_markdown())
 
     # prepare train/test splitting
