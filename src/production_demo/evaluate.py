@@ -1,8 +1,6 @@
-import hashlib
 import logging
 import pandas as pd
 
-from joblib import dump
 from lightgbm import LGBMRegressor
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import TimeSeriesSplit, cross_validate
@@ -17,12 +15,11 @@ from production_demo.constants import (
 from production_demo.train import CategoriesTransformer
 
 
-# set up logging format
+# Set up logging format
 logging.basicConfig(
     level=logging.INFO,
     format="%(levelname)s %(asctime)-15s: %(funcName)s:%(lineno)d: %(message)s",
 )
-
 logger = logging.getLogger(__name__)
 
 
@@ -30,17 +27,17 @@ def handler():
     logger.info("Loading train data")
     train = pd.read_csv("./data/train.csv")
 
-    # log some metrics
+    # Log some metrics
     logger.info(train.shape)
     logger.info(train[NUMERICS + CATEGORIES].shape)
     logger.info(train[NUMERICS + CATEGORIES].head().to_markdown())
     logger.info(train[NUMERICS + [OUTPUT]].describe().T.to_markdown())
 
-    # prepare train/test splitting
+    # Prepare train/test splitting
     train.sort_values(by=["YrSold", "MoSold"], inplace=True)
     tss = TimeSeriesSplit(n_splits=5)
 
-    # set up training pipeline
+    # Set up training pipeline
     logger.info("Running cross validation...")
     hct = CategoriesTransformer(CATEGORIES)
     model = Pipeline(

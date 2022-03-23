@@ -3,7 +3,6 @@ import pandas as pd
 
 from numpy import nan
 from production_demo.train import CategoriesTransformer
-from production_demo.constants import CATEGORIES, NUMERICS, OUTPUT
 
 
 SAMPLE_RECORD = {
