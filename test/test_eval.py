@@ -3,7 +3,13 @@ import pytest
 
 from production_demo import evaluate
 from production_demo.evaluate import handler
-from production_demo.constants import CATEGORIES, NUMERICS, MODEL_PARAMS, EVAL_SPLITS, OUTPUT
+from production_demo.constants import (
+    CATEGORIES,
+    NUMERICS,
+    MODEL_PARAMS,
+    EVAL_SPLITS,
+    OUTPUT,
+)
 
 from unittest.mock import MagicMock, call, ANY
 
@@ -23,8 +29,7 @@ def test_eval_handler(monkeypatch):
     handler()
 
     # THEN
-
-    # ensure we create pipeline and set model params
+    # Ensure a model pipeline is created and model params are set
     assert mock_pipeline.mock_calls == [
         # create pipeline
         call(ANY),
@@ -32,7 +37,7 @@ def test_eval_handler(monkeypatch):
         call().set_params(**MODEL_PARAMS),
     ]
 
-    # test call to cross validation
+    # Cross validation is called
     assert mock_cv.mock_calls[:1] == [
         call(
             estimator=mock_pipeline(),

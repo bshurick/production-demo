@@ -45,7 +45,6 @@ def test_hasher():
     xdf_trans = cxt.fit_transform(xdf)
 
     # THEN
-
     # Validate that the response exactly matches our static example
     assert xdf_trans.to_dict() == {
         "Id": {0: 142},
