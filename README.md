@@ -11,13 +11,13 @@ This invoke service is meant to be adapted into a
 [SageMaker custom inference container](https://docs.aws.amazon.com/sagemaker/latest/dg/adapt-inference-container.html).
 
 ### Package Components
-* `pyproject.toml`: this tells python how to build your package. 
-* `setup.cfg`: this includes package metadata and requirements
-* `.gitignore`: ignore certain files when committing to git
-* `notebooks/`: development notebooks 
-* `src/`: actual production code with invoke service
-* `docs/`: sphinx docs
-* `test/`: python package tests 
+* `pyproject.toml`: Build instructions 
+* `setup.cfg`: Package metadata and PyPi dependencies
+* `.gitignore`: Ignore certain files when committing to git
+* `notebooks/`: Development notebooks for modeling experiments 
+* `src/`: Production code with train and evaluate scripts, and invoke function
+* `doc/`: Sphinx documentation example; built during `tox` testing
+* `test/`: python unit tests 
 
 ## How do I install and run this package?
 
