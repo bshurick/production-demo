@@ -3,7 +3,6 @@ This package contains a demonstration in several
 components of how to create and test a production 
 machine learning model, from notebook to completed package.
 
-
 ## What is this package? 
 This package is a simple demonstration of a production machine learning package, 
 from notebook to training functions with unit tests and implemented invoke service. 
