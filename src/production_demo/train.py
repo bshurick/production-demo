@@ -1,3 +1,9 @@
+"""Training module
+
+This module trains contains a command-line entrypoint to
+train and save model from a data/train.csv file.
+"""
+
 import hashlib
 import logging
 import pandas as pd

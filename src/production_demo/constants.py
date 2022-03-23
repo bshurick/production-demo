@@ -1,3 +1,9 @@
+"""Model constants
+
+This file contains all feature and configuration constants
+used during model training and invocation.
+"""
+
 CATEGORIES = [
     "BldgType",
     "CentralAir",

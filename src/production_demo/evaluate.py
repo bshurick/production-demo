@@ -1,3 +1,11 @@
+"""Evaluation / cross-validation module
+
+This module trains contains a command-line entrypoint to
+run cross validation using `EVAL_SPLITS` and `MODEL_PARAMS`
+from `production_demo.constants` and emit the cross validation
+results to logs.
+"""
+
 import logging
 import pandas as pd
 

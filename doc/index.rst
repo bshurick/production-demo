@@ -11,6 +11,8 @@ Welcome to ProductionDemo's documentation!
 
    production_demo.train
    production_demo.evaluate
+   production_demo.constants
+   production_demo.service
 
 
 Indices and tables
