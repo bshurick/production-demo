@@ -10,33 +10,31 @@ from unittest.mock import MagicMock, call, ANY
 
 
 def test_inference_model_fn(monkeypatch):
-    """ Test model function handler
-    """
+    """Test model function handler"""
     # GIVEN
     mock_load = MagicMock()
     monkeypatch.setattr(service, "load", mock_load)
-    mock_load.return_value = Pipeline([('Step', None)])
+    mock_load.return_value = Pipeline([("Step", None)])
 
     # WHEN
     dih = DefaultInferenceHandler()
-    model = dih.default_model_fn('.')
+    model = dih.default_model_fn(".")
 
     # THEN
-    assert mock_load.mock_calls == [call(f'./{TRAINED_MODEL_NAME}')]
+    assert mock_load.mock_calls == [call(f"./{TRAINED_MODEL_NAME}")]
     assert model is not None
 
 
 def test_inference_predict_fn(monkeypatch):
-    """ Test inference function handler
-    """
+    """Test inference function handler"""
     # GIVEN
     mock_predict = MagicMock()
     mock_data = MagicMock()
     monkeypatch.setattr(Pipeline, "predict", mock_predict)
     monkeypatch.setattr(pd, "DataFrame", mock_data)
-    model = Pipeline([('Step', None)])
+    model = Pipeline([("Step", None)])
     data = pd.DataFrame([])
-    mock_predict.return_value = ''
+    mock_predict.return_value = ""
 
     # WHEN
     dih = DefaultInferenceHandler()
