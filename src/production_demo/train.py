@@ -6,6 +6,7 @@ train and save model from a data/train.csv file.
 
 import hashlib
 import logging
+import os
 import pandas as pd
 
 from joblib import dump
@@ -13,7 +14,13 @@ from lightgbm import LGBMRegressor
 from sklearn.pipeline import Pipeline
 from sklearn.base import BaseEstimator, TransformerMixin
 
-from production_demo.constants import CATEGORIES, MODEL_PARAMS, NUMERICS, OUTPUT
+from production_demo.constants import (
+    CATEGORIES,
+    MODEL_PARAMS,
+    NUMERICS,
+    OUTPUT,
+    TRAINED_MODEL_NAME,
+)
 
 
 # set up logging format
@@ -113,4 +120,4 @@ def handler():
 
     # Serialize trained model artifacts
     logger.info("Save model artifacts")
-    dump(model, "./data/trained_model")
+    dump(model, os.path.join("./data", TRAINED_MODEL_NAME))
