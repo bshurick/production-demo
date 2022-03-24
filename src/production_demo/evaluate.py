@@ -32,7 +32,17 @@ logger = logging.getLogger(__name__)
 
 
 def handler():
-    """Main entry point for model evaluate script"""
+    """Main entry point for model evaluate script
+
+    Steps in the evaluation process:
+        1. Load data from ./data/train.csv
+        2. Sort data by date sold and create time-based cross validation splitter
+        3. Create model training pipeline using Sklearn
+        4. Set model params learned during parameter tuning
+        5. Run cross validation
+        6. Emit cross validation results into logs
+    """
+
     logger.info("Loading train data")
     train = pd.read_csv("./data/train.csv")
 
