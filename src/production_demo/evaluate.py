@@ -44,7 +44,7 @@ def handler():
 
     # Prepare train/test splitting
     train.sort_values(by=["YrSold", "MoSold"], inplace=True)
-    tss = TimeSeriesSplit(n_splits=5)
+    tss = TimeSeriesSplit(n_splits=EVAL_SPLITS)
 
     # Set up training pipeline
     logger.info("Running cross validation...")

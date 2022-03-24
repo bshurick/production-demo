@@ -18,3 +18,5 @@ check that each known step is executed (e.g. load data, create model, fit, dump)
     production_demo.train
     production_demo.train.handler
     production_demo.train.CategoriesTransformer
+    production_demo.train.CategoriesTransformer.hash_col
+    production_demo.train.CategoriesTransformer.transform

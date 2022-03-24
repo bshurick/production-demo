@@ -26,26 +26,48 @@ logger = logging.getLogger(__name__)
 
 class CategoriesTransformer(BaseEstimator, TransformerMixin):
     """Custom transformer for categories
-    
-    :param category_cols: A list of categorical columns to hash
-    :type category_cols: list
 
-    :param n_buckets: The number of hash buckets to use when hashing
-    :type n_buckets: Integer
+    Use this to create hashed numeric values for a list of 
+    categorical columns for any pandas dataframe. This can be used 
+    in place of One Hot Encoding of categorical values, and does not 
+    require storing a lookup of possible categories for each column. 
+
+    The LightGBM package performs best without transforming into a high dimensional 
+    (i.e. one hot encoded) feature space; instead, we will directly train using 
+    hashed numeric buckets. 
     """
 
-    @staticmethod
-    def hash_col(x: str, n_buckets: int=100000) -> int:
-        """Hash a string value into numeric buckets"""
-        return int(hashlib.md5(str(x).encode("utf-8")).hexdigest(), 16) % n_buckets
-
     def __init__(self, category_cols: list, n_buckets: int = 100000):
-        """Choose columns to hash into N buckets"""
+        """Choose columns to hash into N buckets
+        
+        :param category_cols: A list of categorical columns to hash
+        :type category_cols: list
+
+        :param n_buckets: The number of hash buckets to use when hashing
+        :type n_buckets: int
+        """
         self.category_cols = category_cols
         self.n_buckets = n_buckets
 
+    @staticmethod
+    def hash_col(x: str, n_buckets: int=100000) -> int:
+        """Hash a string value into numeric buckets
+        
+        :param x: A string to hash
+        :type x: str
+
+        :param n_buckets: The number of hash buckets to use 
+        :type n_buckets: int
+
+        :return: The integer bucket value
+        :rtype: int
+        """
+        return int(hashlib.md5(str(x).encode("utf-8")).hexdigest(), 16) % n_buckets
+
     def fit(self, X, y=None):
-        """Implements a fit function but does nothing"""
+        """Implements a fit function but does nothing
+        
+        """
         # no fit; return self
         return self
 
@@ -59,7 +81,15 @@ class CategoriesTransformer(BaseEstimator, TransformerMixin):
 
 
 def handler():
-    """Main entry point for model training"""
+    """Main entry point for model training
+    
+    Steps in the training process:
+        1. Load data from ./data/train.csv  
+        2. Create training pipeline using Sklearn Pipeline  
+        3. Set model params learned during parameter tuning  
+        4. Fit model on training data  
+        5. Serialize model using joblib  
+    """
 
     # Load training data
     logger.info("Loading data")
