@@ -9,14 +9,14 @@ from unittest.mock import MagicMock, call, ANY
 
 
 def test_train_handler(monkeypatch):
-    """Test handler function for training module 
+    """Test handler function for training module
 
     Steps in the process:
-        1. **GIVEN** mocked pandas, sklearn scaffolding, and joblib dump mechanism...  
-        2. **WHEN** handler is executed...  
+        1. **GIVEN** mocked pandas, sklearn scaffolding, and joblib dump mechanism...
+        2. **WHEN** handler is executed...
         3. **THEN** data is loaded with pandas, the model pipeline is created and trained,
-           and model artifacts are serialized locally. 
-    """    
+           and model artifacts are serialized locally.
+    """
     # GIVEN
     mock_pandas = MagicMock()
     mock_pipeline = MagicMock()

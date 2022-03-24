@@ -15,6 +15,7 @@ from sklearn.model_selection import TimeSeriesSplit, cross_validate
 
 from production_demo.constants import (
     CATEGORIES,
+    EVAL_METRIC,
     EVAL_SPLITS,
     MODEL_PARAMS,
     NUMERICS,
@@ -72,7 +73,7 @@ def handler():
         y=train[OUTPUT],
         cv=tss,
         n_jobs=-1,
-        scoring="neg_mean_squared_log_error",
+        scoring=EVAL_METRIC,
     )
 
     # Print results to logs

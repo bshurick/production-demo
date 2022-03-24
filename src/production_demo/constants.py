@@ -68,3 +68,4 @@ MODEL_PARAMS = {
 }
 
 EVAL_SPLITS = 5
+EVAL_METRIC = "neg_mean_squared_log_error"

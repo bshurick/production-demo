@@ -12,15 +12,16 @@
 #
 import os
 import sys
-sys.path.append(os.path.abspath('../src/'))
-sys.path.append(os.path.abspath('../test/'))
+
+sys.path.append(os.path.abspath("../src/"))
+sys.path.append(os.path.abspath("../test/"))
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'ProductionDemo'
-copyright = '2022, Brandon Shurick'
-author = 'Brandon Shurick'
+project = "ProductionDemo"
+copyright = "2022, Brandon Shurick"
+author = "Brandon Shurick"
 
 
 # -- General configuration ---------------------------------------------------
@@ -37,12 +38,12 @@ extensions = [
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -57,4 +58,4 @@ autoclass_content = "class"
 autodoc_member_order = "bysource"
 default_role = "py:obj"
 
-html_theme = 'alabaster'
+html_theme = "alabaster"
