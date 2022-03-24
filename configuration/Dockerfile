@@ -21,5 +21,9 @@ RUN apt-get update && \
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 RUN update-alternatives --install /usr/local/bin/pip pip /usr/local/bin/pip3 1
 
+
+# Install dependencies via production package
 # TODO: Install demo package in environment and launch entrypoint
+RUN pip3 --no-cache-dir install ../
+
 ENTRYPOINT ["bin/entrypoint"]
