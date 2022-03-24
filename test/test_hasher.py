@@ -29,8 +29,8 @@ def test_hasher():
 
     Steps in the process:
         1. **GIVEN** A (static) fake dataset with mixed categorical and numeric values...  
-        2. **WHEN** `CategoriesTransformer` is fit and then transforms the fake dataset...  
-        3. **THEN** The result should match our expected result exactly. 
+        2. **WHEN** A `CategoriesTransformer` instance is fit and transforms the fake dataset...  
+        3. **THEN** The transformed output with hashed buckets should match our expected result. 
     """
     # GIVEN
     xdf = pd.DataFrame([SAMPLE_RECORD], index=[0])

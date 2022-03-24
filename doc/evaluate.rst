@@ -6,3 +6,4 @@ Evaluation Module
     :recursive:
 
     production_demo.evaluate
+    production_demo.evaluate.handler
