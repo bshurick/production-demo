@@ -18,6 +18,14 @@ from testfixtures import LogCapture
 
 
 def test_eval_handler(monkeypatch):
+    """Test handler function for evaluation module 
+
+    Steps in the process:
+        1. **GIVEN** mocked pandas, sklearn scaffolding and cross validation modules...  
+        2. **WHEN** handler is executed...  
+        3. **THEN** data is loaded with pandas, the model pipeline is created and cross validated,
+           and cross validation results are emitted to logs in the expected format. 
+    """
     # GIVEN
     mock_pandas = MagicMock()
     mock_pipeline = MagicMock()
