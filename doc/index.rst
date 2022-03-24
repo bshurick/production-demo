@@ -4,13 +4,12 @@
    contain the root `toctree` directive.
 
 Welcome to ProductionDemo's documentation!
-==========================================
+---------
 
-.. autosummary::
-   :toctree: modules
-   :recursive:
+.. toctree::
 
-   production_demo
+   train
+   evaluate
 
 
 Indices and tables

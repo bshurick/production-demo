@@ -25,10 +25,17 @@ logger = logging.getLogger(__name__)
 
 
 class CategoriesTransformer(BaseEstimator, TransformerMixin):
-    """Custom transformer for categories"""
+    """Custom transformer for categories
+    
+    :param category_cols: A list of categorical columns to hash
+    :type category_cols: list
+
+    :param n_buckets: The number of hash buckets to use when hashing
+    :type n_buckets: Integer
+    """
 
     @staticmethod
-    def hash_col(x, n_buckets=100000):
+    def hash_col(x: str, n_buckets: int=100000) -> int:
         """Hash a string value into numeric buckets"""
         return int(hashlib.md5(str(x).encode("utf-8")).hexdigest(), 16) % n_buckets
 
