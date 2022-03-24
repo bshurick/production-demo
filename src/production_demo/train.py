@@ -66,13 +66,15 @@ class CategoriesTransformer(BaseEstimator, TransformerMixin):
 
     def fit(self, X, y=None):
         """Implements a fit function but does nothing
-        
         """
         # no fit; return self
         return self
 
     def transform(self, X):
-        """Apply our hashing function to categorical columns"""
+        """Apply our hashing function to categorical columns
+
+        Loop through categorical column and replace with numeric hash buckets. 
+        """
         _X = X.copy()
         for c in self.category_cols:
             _X[c].fillna("", inplace=True)
