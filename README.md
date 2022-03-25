@@ -53,7 +53,7 @@ then, run `bin/HouseTrain`.
 Run `bin/HouseEval` to run cross validation and emit results as logs. 
 
 ### Launch inference service
-1. Install Docker 
+1. Install [Docker](https://docs.docker.com/get-docker/)
 1. Install this package via [instructions](#installation)
 1. Run [training](#training)
 1. Run the launch script (`./launch`) to build a docker container and run locally  
