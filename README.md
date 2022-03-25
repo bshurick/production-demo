@@ -25,7 +25,8 @@ looking to improve their unit testing skills.
 * `notebooks/`: Development notebooks for modeling experiments 
 * `src/`: Production code with train and evaluate scripts, and invoke function
 * `doc/`: Sphinx documentation example; built during `tox` testing
-* `test/`: python unit tests 
+* `test/`: Python unit tests 
+* `launch`: Build the inference docker container and launch service locally or publish to ECR
 
 ## How do I install and run this package?
 
@@ -50,3 +51,10 @@ then, run `bin/HouseTrain`.
 
 ### Evaluation 
 Run `bin/HouseEval` to run cross validation and emit results as logs. 
+
+### Launch Inference Service
+1. Install Docker 
+1. Install this package via instructions
+1. Run training 
+1. Run the launch script `./launch` to build a docker container and run locally
+1. Add an AWS account ID to push the docker image to ECR `./launch [ACCOUNT_ID_NUMBER]`
