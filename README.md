@@ -12,10 +12,10 @@ The code is basic and meant to be used as a starting point for larger projects. 
 tests cover both logic and scripting with mocks, which should be helpful for Data Scientists 
 looking to improve their unit testing skills. 
 
-### Project Highlights
+### Demo Highlights
 1. Notebooks folder for parameter tuning and data analysis
 1. Buildable python package with train, evaluate, and inference modules
-1. Unit tests with >99% code coverage, automated with [tox](https://tox.wiki/en/latest/)
+1. Unit tests with code coverage reporting, automated with [tox](https://tox.wiki/en/latest/)
 1. Auto-generated package documentation via [Sphinx](https://www.sphinx-doc.org/en/master/)
 
 ### Package Components
@@ -41,7 +41,7 @@ looking to improve their unit testing skills.
 Install tox with `pip install tox`; 
 run build and unit tests using the `tox` command.  
 After running, 
-check the test coverage HTML table in `build/coverage/index.html`. 
+view the test coverage report in `build/coverage/index.html`. 
 
 ### Training 
 To run train after building, copy the
