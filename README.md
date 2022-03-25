@@ -16,12 +16,12 @@ looking to improve their unit testing skills.
 1. Notebooks folder for parameter tuning and data analysis
 1. Buildable python package with train, evaluate, and inference modules
 1. Unit tests with >99% code coverage, automated with [tox](https://tox.wiki/en/latest/)
-1. Auto-generated documentation via [Sphinx](https://www.sphinx-doc.org/en/master/)
+1. Auto-generated package documentation via [Sphinx](https://www.sphinx-doc.org/en/master/)
 
 ### Package Components
 * `pyproject.toml`: Build instructions 
 * `setup.cfg`: Package metadata and PyPi dependencies
-* `.gitignore`: Ignore certain files when committing to git
+* `.gitignore`: Ignore some local files, such as data, when committing to git
 * `notebooks/`: Development notebooks for modeling experiments 
 * `src/`: Production code with train and evaluate scripts, and invoke function
 * `doc/`: Sphinx documentation example; built during `tox` testing
