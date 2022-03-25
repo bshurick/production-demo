@@ -52,9 +52,9 @@ then, run `bin/HouseTrain`.
 ### Evaluation 
 Run `bin/HouseEval` to run cross validation and emit results as logs. 
 
-### Launch Inference Service
+### Launch inference service
 1. Install Docker 
-1. Install this package via instructions
-1. Run training 
-1. Run the launch script `./launch` to build a docker container and run locally
-1. Add an AWS account ID to push the docker image to ECR `./launch [ACCOUNT_ID_NUMBER]`
+1. Install this package via [instructions](#installation)
+1. Run [training](#training)
+1. Run the launch script (`./launch`) to build a docker container and run locally  
+   [or] add an AWS account ID as a launch argument to build and push the docker image to ECR: `./launch [ACCOUNT_ID_NUMBER]`
