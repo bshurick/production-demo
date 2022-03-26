@@ -1,6 +1,6 @@
 #/usr/bin/env bash
 
 # TODO: Create docker build script and launch locally or publish to ECR
-docker build -t test-cont .
+docker build -t test-cont -f configuration/Dockerfile
 docker run --rm test-cont
 

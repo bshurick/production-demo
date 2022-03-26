@@ -10,6 +10,7 @@ RUN apt-get update && \
     apt-get -y install --no-install-recommends \
     libgomp1 \
     ca-certificates \
+    openjdk-8-jdk-headless \
     python3.9 \
     python3-dev \
     curl \
@@ -24,5 +25,6 @@ RUN python get-pip.py
 # TODO: Install demo package in environment and launch entrypoint
 COPY . pkg
 RUN cd pkg && pip3 --no-cache-dir install .
+RUN mkdir /opt/ml && mkdir /opt/ml/model && mv pkg/data/trained_model /opt/ml/model/trained_model
 
 ENTRYPOINT ["/usr/local/bin/entrypoint"]

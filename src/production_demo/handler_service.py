@@ -1,4 +1,7 @@
 """Model Hosting Server
+
+Creates a hosting server using SageMaker model inference toolkit
+https://github.com/aws/sagemaker-inference-toolkit
 """
 
 from production_demo.service import InferenceHandler
@@ -18,16 +21,3 @@ class HandlerService(DefaultHandlerService):
     def __init__(self):
         transformer = Transformer(default_inference_handler=InferenceHandler())
         super(HandlerService, self).__init__(transformer=transformer)
-
-
-_service = HandlerService()
-
-
-def handle(data, context):
-    if not _service.initialized:
-        _service.initialize(context)
-
-    if data is None:
-        return None
-
-    return _service.handle(data, context)
