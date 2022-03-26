@@ -101,4 +101,5 @@ def start_server():
 
 
 def main():
-    Popen(["gunicorn", "-w", "4", "production_demo.service:start_server"])
+    p = Popen(["gunicorn", "-w", "4", "production_demo.service:start_server"]).wait()
+    raise Exception(p)
