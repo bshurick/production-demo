@@ -3,7 +3,7 @@ import pandas as pd
 
 
 from production_demo import service
-from production_demo.service import DefaultInferenceHandler
+from production_demo.service import InferenceHandler
 from production_demo.constants import TRAINED_MODEL_NAME
 from sklearn.pipeline import Pipeline
 from unittest.mock import MagicMock, call, ANY
@@ -17,8 +17,8 @@ def test_inference_model_fn(monkeypatch):
     mock_load.return_value = Pipeline([("Step", None)])
 
     # WHEN
-    dih = DefaultInferenceHandler()
-    model = dih.default_model_fn(".")
+    dih = InferenceHandler()
+    model = dih.model_fn(".")
 
     # THEN
     assert mock_load.mock_calls == [call(f"./{TRAINED_MODEL_NAME}")]
@@ -37,8 +37,8 @@ def test_inference_predict_fn(monkeypatch):
     mock_predict.return_value = ""
 
     # WHEN
-    dih = DefaultInferenceHandler()
-    x = dih.default_predict_fn(data, model)
+    dih = InferenceHandler()
+    x = dih.predict_fn(data, model)
 
     # THEN
     assert mock_predict.mock_calls == [call(mock_data([]))]

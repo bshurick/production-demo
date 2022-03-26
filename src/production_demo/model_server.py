@@ -2,6 +2,7 @@
 """
 
 from production_demo.service import InferenceHandler
+from sagemaker_inference.default_handler_service import DefaultHandlerService
 from sagemaker_inference.transformer import Transformer
 
 

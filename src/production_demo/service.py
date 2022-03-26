@@ -10,8 +10,6 @@ https://github.com/aws/sagemaker-inference-toolkit
 
 import os
 
-from sagemaker_inference import model_server
-from sagemaker_inference.default_handler_service import DefaultHandlerService
 from sagemaker_inference import (
     content_types,
     decoder,
@@ -20,8 +18,6 @@ from sagemaker_inference import (
     errors,
 )
 from joblib import load
-
-from production_demo import model_server as launchable_model_server
 from production_demo.constants import TRAINED_MODEL_NAME
 
 
@@ -64,7 +60,3 @@ class InferenceHandler(default_inference_handler.DefaultInferenceHandler):
         :rtype: pandas.DataFrame
         """
         return model.predict(data)
-
-
-def start_server():
-    model_server.start_model_server(handler_service=launchable_model_server)
