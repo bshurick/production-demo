@@ -9,16 +9,23 @@ https://github.com/aws/sagemaker-inference-toolkit
 """
 
 import os
+import pandas as pd
+import logging
 
-from flask import Flask, request
-from sagemaker_inference import (
-    decoder,
-    encoder,
-)
+from io import StringIO
+from flask import Flask, request, Response
 from subprocess import Popen
+from time import time
 
 from joblib import load
-from production_demo.constants import TRAINED_MODEL_NAME
+from production_demo.constants import NUMERICS, CATEGORIES, TRAINED_MODEL_NAME
+
+# set up logging format
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(levelname)s %(asctime)-15s: %(funcName)s:%(lineno)d: %(message)s",
+)
+logger = logging.getLogger(__name__)
 
 
 class InferenceHandler:
@@ -68,12 +75,20 @@ class InferenceHandler:
             input_data: the request payload serialized in the content_type format
             content_type: the request content_type
 
-        Returns: input_data deserialized into torch.FloatTensor or torch.cuda.FloatTensor depending if cuda is available.
+        Returns: input_data deserialized pandas object
         """
-        return decoder.decode(input_data, content_type)
+        assert content_type in ["text/csv", "application/json"]
+        f = StringIO()
+        f.write(input_data)
+        f.seek(0)
+        if content_type == "text/csv":
+            input_df = pd.read_csv(f, names=NUMERICS + CATEGORIES)
+        else:
+            input_df = pd.read_json(f, lines=True)
+        return input_df
 
-    def output_fn(self, prediction, accept):
-        """A default output_fn for PyTorch. Serializes predictions from predict_fn to JSON, CSV or NPY format.
+    def output_fn(self, prediction):
+        """Serializes predictions from predict_fn to CSV
 
         Args:
             prediction: a prediction result from predict_fn
@@ -81,7 +96,10 @@ class InferenceHandler:
 
         Returns: output data serialized
         """
-        return encoder.encode(prediction, accept)
+        f = StringIO()
+        prediction.to_csv(f, index=False, header=False)
+        f.seek(0)
+        return f.getvalue()
 
 
 app = None
@@ -93,13 +111,22 @@ def start_server():
 
     @app.route("/invocations", methods=["POST"])
     def invoke(input_data):
+        start = time()
         data = handler.input_fn(input_data=input_data,
                                 content_type=request.content_type)
         prediction = handler.predict_fn(data, model)
-        output = handler.output_fn(prediction, "CSV")
-        return output
+        output = handler.output_fn(prediction)
+        end = time()
+        logger.info(f"response_time: {end-start:.0f}")
+        return Response(output, 
+                        status=200, 
+                        mimetype='text/csv')
 
 
 def main():
-    p = Popen(["gunicorn", "-w", "4", "production_demo.service:start_server"]).wait()
+    p = Popen(["gunicorn",
+               "-w", "4", 
+               "-b", "127.0.0.1:8000",
+               "production_demo.service:start_server"]).wait()
+    # register quit as exception
     raise Exception(p)

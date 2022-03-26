@@ -2,6 +2,6 @@
 
 # TODO: Create docker build script and launch locally or publish to ECR
 mv configuration/Dockerfile ./
-docker build -t test-cont --no-cache .
-docker run test-cont
+docker build -t model-container --no-cache .
+docker run -p 8000:8000 --name model-container model-container
 mv Dockerfile configuration
