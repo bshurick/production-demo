@@ -10,13 +10,7 @@ https://github.com/aws/sagemaker-inference-toolkit
 
 import os
 
-from sagemaker_inference import (
-    content_types,
-    decoder,
-    default_inference_handler,
-    encoder,
-    errors,
-)
+from sagemaker_inference import default_inference_handler
 from joblib import load
 from production_demo.constants import TRAINED_MODEL_NAME
 
