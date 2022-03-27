@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := build
+.PHONY: test build
 
 test:
 	tox
