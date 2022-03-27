@@ -61,3 +61,4 @@ autodoc_member_order = "bysource"
 default_role = "py:obj"
 
 html_theme = "alabaster"
+html_static_path = []
