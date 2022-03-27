@@ -50,7 +50,8 @@ and unzip into a data/ folder in the package root directory;
 then, run `bin/HouseTrain`.
 
 ### Evaluation 
-Run `bin/HouseEval` to run cross validation and emit results as logs. 
+Run `bin/HouseEval` to run cross validation and emit results as logs. Alternatively, 
+run `make evaluate` to save results as a CSV in the `eval/` folder.
 
 ### Launch inference service
 1. Install [Docker](https://docs.docker.com/get-docker/)
