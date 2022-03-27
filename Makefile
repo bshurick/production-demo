@@ -6,7 +6,7 @@ test:
 build:
 	pip install -e .
 
-update-docs:  build/docs
+update-docs:
 	git fetch origin doc-page && git checkout doc-page \
 	&& rm -rf ./docs && mkdir ./docs && cp -r build/docs ./ \
 	&& git add --all ./docs/* && git commit -m 'Update docs' \
@@ -18,3 +18,6 @@ clean:
 
 format:
 	pip install -q -U black && black .
+
+evaluate:
+	bin/HouseEval > eval/results.csv

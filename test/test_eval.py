@@ -1,14 +1,16 @@
-import logging
+import csv
 import pandas as pd
 import pytest
 
+from io import StringIO
 from numpy import array
-from production_demo import evaluate
+from production_demo import evaluate, constants
 from production_demo.evaluate import handler
 from production_demo.constants import (
     CATEGORIES,
     NUMERICS,
     MODEL_PARAMS,
+    EVAL_METRIC,
     EVAL_SPLITS,
     OUTPUT,
 )
@@ -17,7 +19,7 @@ from unittest.mock import MagicMock, call, ANY
 from testfixtures import LogCapture
 
 
-def test_eval_handler(monkeypatch):
+def test_eval_handler(capsys, monkeypatch):
     """Test handler function for evaluation module
 
     Steps in the process:
@@ -46,8 +48,8 @@ def test_eval_handler(monkeypatch):
     }
 
     # WHEN
-    with LogCapture() as l:
-        handler()
+    handler()
+    captured = StringIO(capsys.readouterr().out)
 
     # THEN
     # Ensure a model pipeline is created and model params are set
@@ -66,13 +68,29 @@ def test_eval_handler(monkeypatch):
             y=mock_pandas().__getitem__(OUTPUT),
             cv=mock_tss(n_splits=EVAL_SPLITS),
             n_jobs=-1,
-            scoring="neg_mean_squared_log_error",
+            scoring=EVAL_METRIC,
         ),
     ]
 
     # Examine logs
-    l.check_present(
-        ("production_demo.evaluate", "INFO", "fit_time: 0.3061"),
-        ("production_demo.evaluate", "INFO", "score_time: 0.0347"),
-        ("production_demo.evaluate", "INFO", "test_score: -0.0236"),
-    )
+    reader = csv.reader(captured)
+    captured_list = [r for r in reader]
+    assert captured_list[0] == [
+        "fit_time_mean",
+        "fit_time_std",
+        "score_time_mean",
+        "score_time_std",
+        "test_score_mean",
+        "test_score_std",
+        "test_metric",
+        "runtime",
+    ]
+    assert captured_list[1][:7] == [
+        "0.3061",
+        "0.1258",
+        "0.0347",
+        "0.0052",
+        "0.0236",
+        "0.0046",
+        EVAL_METRIC,
+    ]
