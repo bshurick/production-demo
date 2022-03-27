@@ -28,6 +28,12 @@ def test_endpoint():
         data=TEST_REQUEST,
         headers={"Content-Type": "application/json"},
     )
+    result_double = requests.post(
+        "http://127.0.0.1:8000/invocations",
+        data=TEST_REQUEST + TEST_REQUEST,
+        headers={"Content-Type": "application/json"},
+    )
 
     # THEN
-    assert result.content == b"125627.7320"
+    assert result.content == b"125627.7320\n"
+    assert result_double.content == b"125627.7320\n125627.7320\n"
