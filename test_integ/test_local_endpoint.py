@@ -1,6 +1,4 @@
-import pytest
 import requests
-import json
 
 TEST_REQUEST = (
     '{"1stFlrSF":896,"2ndFlrSF":0,"BedroomAbvGr":2,'
