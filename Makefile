@@ -14,4 +14,4 @@ update-docs:
 	&& git checkout main
 
 clean:
-	rm -rf build && rm -Rf docs 
+	rm -rf build && rm -rf docs && rm -rf bin
