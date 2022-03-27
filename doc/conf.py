@@ -15,6 +15,7 @@ import sys
 
 sys.path.append(os.path.abspath("../src/"))
 sys.path.append(os.path.abspath("../test/"))
+sys.path.append(os.path.abspath("../test_integ/"))
 
 
 # -- Project information -----------------------------------------------------

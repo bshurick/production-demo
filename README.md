@@ -61,4 +61,4 @@ Run `bin/HouseEval` to run cross validation and emit results as logs.
 
 ### Local integration test
 After [launching](#launch-inference-service) the inference service docker container locally,
-run `pytest test_integ` to run integration tests.  
+run `pytest test_integ` to run integration tests on the running service.  
