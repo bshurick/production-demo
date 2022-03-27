@@ -79,7 +79,7 @@ class InferenceHandler:
         """
         assert content_type in ["text/csv", "application/json"]
         f = StringIO()
-        f.write(input_data)
+        f.write(input_data.decode())
         f.seek(0)
         if content_type == "text/csv":
             input_df = pd.read_csv(f, names=NUMERICS + CATEGORIES)
@@ -97,8 +97,8 @@ class InferenceHandler:
         Returns: output data serialized
         """
         f = StringIO()
-        prediction.to_csv(f, index=False, header=False)
-        f.seek(0)
+        for pred in prediction:
+            f.write(f'{pred:.4f}')
         return f.getvalue()
 
 
