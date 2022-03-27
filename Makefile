@@ -6,7 +6,7 @@ test:
 build:
 	pip install -e .
 
-update-docs test:
+update-docs build/docs:
 	git fetch origin doc-page && git checkout doc-page \
 	&& rm -rf ./docs && mkdir ./docs && cp -r build/docs ./ \
 	&& git add --all ./docs/* && git commit -m 'Update docs' \
