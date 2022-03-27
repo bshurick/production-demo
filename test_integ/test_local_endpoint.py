@@ -27,4 +27,4 @@ def test_endpoint():
         data=TEST_REQUEST,
         headers={"Content-Type": "application/json"},
     )
-    assert result.content == "150000"
+    assert result.content == b"125627.7320"
