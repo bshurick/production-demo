@@ -118,7 +118,7 @@ def start_server():
         prediction = handler.predict_fn(data, model)
         output = handler.output_fn(prediction)
         end = time()
-        logger.info(f"response_time: {end-start:.0f}")
+        logger.info(f"response_time: {end-start:.4f}")
         return Response(output, status=200, mimetype="text/csv")
     
     return app
