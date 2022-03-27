@@ -10,6 +10,7 @@ Welcome to ProductionDemo's documentation!
 
    train
    evaluate
+   service
    test
 
 

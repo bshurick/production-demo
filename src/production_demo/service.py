@@ -31,12 +31,9 @@ logger = logging.getLogger(__name__)
 class InferenceHandler:
     """Default handler for model inference
 
-    This class implements `default_model_fn` and `default_predict_fn`.
-
-    `default_model_fn`: Load a model
-    `default_input_fn`: Decode data for inference
-    `default_predict_fn`: Make prediction with model
-    `default_output_fn`: Serialize data for output
+    This class provides core functions to load model artifactgs,
+    deserialize input data, predict using a trained model, and 
+    output a response.
     """
 
     def model_fn(self, model_dir):
@@ -103,12 +100,16 @@ class InferenceHandler:
 
 
 def start_server():
+    """Create Flask application 
+    """
     app = Flask(__name__)
     handler = InferenceHandler()
     model = handler.model_fn("/opt/ml/model")
 
     @app.route("/invocations", methods=["POST"])
     def invoke():
+        """Model service invocation
+        """
         start = time()
         data = handler.input_fn(
             input_data=request.data, 
@@ -124,6 +125,8 @@ def start_server():
 
 
 def main():
+    """Entrypoint for launching Flask service
+    """
     p = Popen(
         [
             "gunicorn",

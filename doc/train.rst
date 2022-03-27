@@ -10,7 +10,6 @@ functions, so that unit tests can be created to test individual bits
 of functionality that you've created; while, tests for `handler` only 
 check that each known step is executed (e.g. load data, create model, fit, dump).
 
-
 .. autosummary::
     :toctree: modules
     :recursive:
