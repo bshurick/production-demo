@@ -4,9 +4,9 @@ test:
 	pip install -q -U tox && tox
 
 build:
-	pip install .
+	pip install -e .
 
-update-docs:
+update-docs test:
 	git fetch origin doc-page && git checkout doc-page \
 	&& rm -rf ./docs && mkdir ./docs && cp -r build/docs ./ \
 	&& git add --all ./docs/* && git commit -m 'Update docs' \
