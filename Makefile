@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := update-docs
+.DEFAULT_GOAL := build
 
 test:
 	tox
