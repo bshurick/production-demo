@@ -30,6 +30,10 @@ looking to improve their unit testing skills.
 
 ## How do I install and run this package?
 
+You may first need to install [Make](https://www.gnu.org/software/make/) on your machine, 
+e.g. via [brew](https://formulae.brew.sh/formula/make) on MacOS. If the `make -version` command 
+works already, then it's already installed. 
+
 ### Installation
 1. `git clone https://github.com/bshurick/production-demo.git`  
 2. `cd production-demo`  
@@ -50,15 +54,14 @@ and unzip into a data/ folder in the package root directory;
 then, run `bin/HouseTrain`.
 
 ### Evaluation 
-Run `bin/HouseEval` to run cross validation and emit results as logs. Alternatively, 
-run `make evaluate` to save results as a CSV in the `eval/` folder.
+Run `bin/HouseEval` to run cross validation and emit results as logs.  
+Alternatively, run `make evaluate` to save results as a CSV in the `eval/` folder.
 
 ### Launch inference service
 1. Install [Docker](https://docs.docker.com/get-docker/)
 1. Install this package via [instructions](#installation)
 1. Run [training](#training)
-1. Run the launch script (`./launch`) to build a docker container and run locally  
-   [or] add an AWS account ID as a launch argument to build and push the docker image to ECR: `./launch [ACCOUNT_ID_NUMBER]`
+1. Run the launch script (`./launch`) to build a docker container and run locally
 
 ### Local integration test
 After [launching](#launch-inference-service) the inference service docker container locally,
