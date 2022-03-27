@@ -1,7 +1,7 @@
 .PHONY: test build
 
 test:
-	tox
+	pip install -q -U tox && tox
 
 build:
 	pip install .
@@ -15,3 +15,6 @@ update-docs:
 
 clean:
 	rm -rf build && rm -rf docs && rm -rf bin
+
+format:
+	pip install -q -U black && black .
