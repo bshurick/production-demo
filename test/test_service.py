@@ -1,6 +1,6 @@
 import pytest
 import pandas as pd
-
+import numpy as np
 
 from production_demo import service
 from production_demo.service import InferenceHandler
@@ -43,3 +43,21 @@ def test_inference_predict_fn(monkeypatch):
     # THEN
     assert mock_predict.mock_calls == [call(mock_data([]))]
     assert x is not None
+
+
+def test_inference_input_fn(monkeypatch):
+    """ Test input parsing function 
+    """
+    # GIVEN 
+    input_data_js = b'{"1stFlrSF":896,"2ndFlrSF":0,"BedroomAbvGr":2}\n'
+
+    # WHEN 
+    dih = InferenceHandler()
+    x1 = dih.input_fn(input_data_js, "application/json")
+
+    # THEN 
+    assert isinstance(x1, pd.DataFrame)
+    np.testing.assert_array_equal(x1.values, [[896, 0, 2]])
+    assert list(x1.columns) == list(("1stFlrSF", "2ndFlrSF", "BedroomAbvGr"))
+
+

@@ -66,7 +66,7 @@ class InferenceHandler:
         return model.predict(data)
 
     def input_fn(self, input_data, content_type):
-        """A default input_fn that can handle JSON, CSV and NPZ formats.
+        """A default input_fn that can handle JSON format.
 
         Args:
             input_data: the request payload serialized in the content_type format
@@ -74,14 +74,11 @@ class InferenceHandler:
 
         Returns: input_data deserialized pandas object
         """
-        assert content_type in ["text/csv", "application/json"]
+        assert content_type in ["application/json"]
         f = StringIO()
         f.write(input_data.decode())
         f.seek(0)
-        if content_type == "text/csv":
-            input_df = pd.read_csv(f, names=NUMERICS + CATEGORIES)
-        else:
-            input_df = pd.read_json(f, lines=True)
+        input_df = pd.read_json(f, lines=True)
         return input_df
 
     def output_fn(self, prediction):
