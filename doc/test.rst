@@ -1,4 +1,4 @@
-Unit tests
+Unit and integration tests
 ==========================================
 
 .. autosummary::
