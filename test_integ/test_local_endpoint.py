@@ -1,10 +1,6 @@
 import pytest
-
-from production_demo.constants import CATEGORIES, NUMERICS
-import pandas as pd
 import requests
-from io import StringIO
-
+import json
 
 TEST_REQUEST = (
     '{"1stFlrSF":896,"2ndFlrSF":0,"BedroomAbvGr":2,'
@@ -28,7 +24,7 @@ TEST_REQUEST = (
 def test_endpoint():
     result = requests.post(
         "http://127.0.0.1:8000/invocations",
-        json=TEST_REQUEST,
+        data=TEST_REQUEST,
         headers={"Content-Type": "application/json"},
     )
     assert result.content == "150000"

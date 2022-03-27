@@ -102,26 +102,25 @@ class InferenceHandler:
         return f.getvalue()
 
 
-app = None
-
-
 def start_server():
-    global app
     app = Flask(__name__)
     handler = InferenceHandler()
     model = handler.model_fn("/opt/ml/model")
 
     @app.route("/invocations", methods=["POST"])
-    def invoke(input_data):
+    def invoke():
         start = time()
         data = handler.input_fn(
-            input_data=input_data, content_type=request.content_type
+            input_data=request.data, 
+            content_type=request.content_type
         )
         prediction = handler.predict_fn(data, model)
         output = handler.output_fn(prediction)
         end = time()
         logger.info(f"response_time: {end-start:.0f}")
         return Response(output, status=200, mimetype="text/csv")
+    
+    return app
 
 
 def main():
