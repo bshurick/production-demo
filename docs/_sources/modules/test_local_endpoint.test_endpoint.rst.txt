@@ -1,0 +1,6 @@
+﻿test\_local\_endpoint.test\_endpoint
+====================================
+
+.. currentmodule:: test_local_endpoint
+
+.. autofunction:: test_endpoint

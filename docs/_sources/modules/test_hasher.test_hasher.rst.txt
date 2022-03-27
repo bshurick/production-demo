@@ -1,0 +1,6 @@
+﻿test\_hasher.test\_hasher
+=========================
+
+.. currentmodule:: test_hasher
+
+.. autofunction:: test_hasher

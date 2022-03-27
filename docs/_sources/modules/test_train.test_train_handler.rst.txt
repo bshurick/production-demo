@@ -1,0 +1,6 @@
+﻿test\_train.test\_train\_handler
+================================
+
+.. currentmodule:: test_train
+
+.. autofunction:: test_train_handler
