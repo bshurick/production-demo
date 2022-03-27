@@ -61,9 +61,15 @@
         <span class="n">data</span><span class="o">=</span><span class="n">TEST_REQUEST</span><span class="p">,</span>
         <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span>
     <span class="p">)</span>
+    <span class="n">result_double</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;http://127.0.0.1:8000/invocations&quot;</span><span class="p">,</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">TEST_REQUEST</span> <span class="o">+</span> <span class="n">TEST_REQUEST</span><span class="p">,</span>
+        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span>
+    <span class="p">)</span>
 
     <span class="c1"># THEN</span>
-    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">content</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;125627.7320&quot;</span></div>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">content</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;125627.7320</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">assert</span> <span class="n">result_double</span><span class="o">.</span><span class="n">content</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;125627.7320</span><span class="se">\n</span><span class="s2">125627.7320</span><span class="se">\n</span><span class="s2">&quot;</span></div>
 </pre></div>
 
           </div>
