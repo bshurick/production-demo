@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 from production_demo import service
-from production_demo.service import InferenceHandler, start_server
+from production_demo.service import InferenceHandler, start_server, main
 from production_demo.constants import TRAINED_MODEL_NAME
 from sklearn.pipeline import Pipeline
 from unittest.mock import MagicMock, call, ANY
@@ -132,3 +132,23 @@ def test_request_handler(monkeypatch):
         call(mock_predict.return_value)
     ]
     assert x is not None
+
+
+def test_main(monkeypatch):
+    """ Mock our entrypoint
+    """
+    # GIVEN
+    mock_subproc = MagicMock()
+    monkeypatch.setattr(service, "Popen", mock_subproc)
+
+    # WHEN 
+    try:
+        main()
+    except Exception:
+        pass
+
+    # THEN 
+    assert mock_subproc.mock_calls == [
+        call(['gunicorn', '-w', ANY, '-b', ANY, 'production_demo.service:start_server()']),
+        call().wait(),
+    ]
