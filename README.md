@@ -58,3 +58,7 @@ Run `bin/HouseEval` to run cross validation and emit results as logs.
 1. Run [training](#training)
 1. Run the launch script (`./launch`) to build a docker container and run locally  
    [or] add an AWS account ID as a launch argument to build and push the docker image to ECR: `./launch [ACCOUNT_ID_NUMBER]`
+
+### Local integration test
+After [launching](#launch-inference-service) the inference service docker container locally,
+run `pytest test_integ` to run integration tests.  
