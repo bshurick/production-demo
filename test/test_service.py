@@ -45,7 +45,7 @@ def test_inference_predict_fn(monkeypatch):
     assert x is not None
 
 
-def test_inference_input_fn(monkeypatch):
+def test_inference_input_fn():
     """ Test input parsing function 
     """
     # GIVEN 
@@ -61,3 +61,15 @@ def test_inference_input_fn(monkeypatch):
     assert list(x1.columns) == list(("1stFlrSF", "2ndFlrSF", "BedroomAbvGr"))
 
 
+def test_inference_output_fn():
+    """ Test output serialization function
+    """
+    # GIVEN 
+    prediction = np.array([150000.25838, 200000.5])
+
+    # WHEN 
+    dih = InferenceHandler()
+    x1 = dih.output_fn(prediction)
+
+    # THEN 
+    assert x1 == '150000.2584\n200000.5000\n'

@@ -92,7 +92,7 @@ class InferenceHandler:
         """
         f = StringIO()
         for pred in prediction:
-            f.write(f'{pred:.4f}')
+            f.write(f'{pred:.4f}\n')
         return f.getvalue()
 
 
