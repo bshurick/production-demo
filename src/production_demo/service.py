@@ -1,4 +1,4 @@
-"""Invoke function
+"""Flask invocation service
 
 This module contains logic for processing batches of
 input data into predictions.
@@ -108,7 +108,7 @@ def start_server():
 
     @app.route("/invocations", methods=["POST"])
     def invoke():
-        """Model service invocation
+        """Model service invocation route
         """
         start = time()
         data = handler.input_fn(
