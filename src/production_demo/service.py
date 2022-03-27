@@ -103,30 +103,37 @@ class InferenceHandler:
 
 
 app = None
+
+
 def start_server():
     global app
     app = Flask(__name__)
     handler = InferenceHandler()
-    model = handler.model_fn('/opt/ml/model')
+    model = handler.model_fn("/opt/ml/model")
 
     @app.route("/invocations", methods=["POST"])
     def invoke(input_data):
         start = time()
-        data = handler.input_fn(input_data=input_data,
-                                content_type=request.content_type)
+        data = handler.input_fn(
+            input_data=input_data, content_type=request.content_type
+        )
         prediction = handler.predict_fn(data, model)
         output = handler.output_fn(prediction)
         end = time()
         logger.info(f"response_time: {end-start:.0f}")
-        return Response(output, 
-                        status=200, 
-                        mimetype='text/csv')
+        return Response(output, status=200, mimetype="text/csv")
 
 
 def main():
-    p = Popen(["gunicorn",
-               "-w", "4", 
-               "-b", "127.0.0.1:8000",
-               "production_demo.service:start_server"]).wait()
+    p = Popen(
+        [
+            "gunicorn",
+            "-w",
+            "4",
+            "-b",
+            "127.0.0.1:8000",
+            "production_demo.service:start_server",
+        ]
+    ).wait()
     # register quit as exception
     raise Exception(p)
