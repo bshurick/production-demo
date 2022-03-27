@@ -1,0 +1,36 @@
+﻿production\_demo.service
+========================
+
+.. automodule:: production_demo.service
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      main
+      start_server
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      InferenceHandler
+   
+   
+
+   
+   
+   
+
+
+
