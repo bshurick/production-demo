@@ -1,6 +1,0 @@
-﻿production\_demo.train.handler
-==============================
-
-.. currentmodule:: production_demo.train
-
-.. autofunction:: handler

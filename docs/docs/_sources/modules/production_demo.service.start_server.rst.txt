@@ -1,6 +1,0 @@
-﻿production\_demo.service.start\_server
-======================================
-
-.. currentmodule:: production_demo.service
-
-.. autofunction:: start_server

@@ -1,6 +1,0 @@
-﻿test\_eval.test\_eval\_handler
-==============================
-
-.. currentmodule:: test_eval
-
-.. autofunction:: test_eval_handler

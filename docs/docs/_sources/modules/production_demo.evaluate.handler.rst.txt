@@ -1,6 +1,0 @@
-﻿production\_demo.evaluate.handler
-=================================
-
-.. currentmodule:: production_demo.evaluate
-
-.. autofunction:: handler

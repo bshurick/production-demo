@@ -1,6 +1,0 @@
-﻿production\_demo.train.CategoriesTransformer.transform
-======================================================
-
-.. currentmodule:: production_demo.train
-
-.. automethod:: CategoriesTransformer.transform

@@ -1,6 +1,0 @@
-﻿production\_demo.service.main
-=============================
-
-.. currentmodule:: production_demo.service
-
-.. autofunction:: main
