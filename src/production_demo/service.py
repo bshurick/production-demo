@@ -60,6 +60,7 @@ class InferenceHandler:
 
         :param model: An Sklearn Pipeline model
         :type model: sklearn.pipeline.Pipeline
+
         :returns: A pandas dataframe to be deserialized
         :rtype: pandas.DataFrame
         """
@@ -68,11 +69,14 @@ class InferenceHandler:
     def input_fn(self, input_data, content_type):
         """A default input_fn that can handle JSON format.
 
-        Args:
-            input_data: the request payload serialized in the content_type format
-            content_type: the request content_type
+        :param input_data: The request payload serialized in the content_type format
+        :type input_data: pandas.Dataframe
 
-        Returns: input_data deserialized pandas object
+        :param content_type: The request content_type
+        :type content_type: str
+
+        :returns: input_data deserialized pandas object
+        :rtype: pandas.DataFrame
         """
         assert content_type in ["application/json"]
         f = StringIO()
@@ -84,16 +88,38 @@ class InferenceHandler:
     def output_fn(self, prediction):
         """Serializes predictions from predict_fn to CSV
 
-        Args:
-            prediction: a prediction result from predict_fn
-            accept: type which the output data needs to be serialized
+        :param prediction: A prediction result from predict_fn
+        :type prediction: numpy.array
 
-        Returns: output data serialized
+        :returns: Output data serialized
+        :rtype: str
         """
         f = StringIO()
         for pred in prediction:
             f.write(f'{pred:.4f}\n')
         return f.getvalue()
+
+    def handle_request(self, request, model):
+        """Handle a single request
+        
+        Routes to input, prediction, output methods
+
+        :param request: The request object
+        :type request: requests.request
+
+        :param model: The trained model 
+        :type model: sklearn.pipeline.Pipeline
+
+        :returns: Output from output_fn
+        :rtype: str
+        """
+        data = self.input_fn(
+            input_data=request.data, 
+            content_type=request.content_type
+        )
+        prediction = self.predict_fn(data, model)
+        output = self.output_fn(prediction)
+        return output
 
 
 def start_server():
@@ -108,12 +134,7 @@ def start_server():
         """Model service invocation route
         """
         start = time()
-        data = handler.input_fn(
-            input_data=request.data, 
-            content_type=request.content_type
-        )
-        prediction = handler.predict_fn(data, model)
-        output = handler.output_fn(prediction)
+        output = handler.handle_request(request, model)
         end = time()
         logger.info(f"response_time: {end-start:.4f}")
         return Response(output, status=200, mimetype="text/csv")
