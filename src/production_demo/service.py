@@ -131,7 +131,7 @@ def main():
             "4",
             "-b",
             "127.0.0.1:8000",
-            "production_demo.service:start_server",
+            "production_demo.service:start_server()",
         ]
     ).wait()
     # register quit as exception
