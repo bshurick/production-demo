@@ -130,7 +130,7 @@ def main():
             "-w",
             "4",
             "-b",
-            "127.0.0.1:8000",
+            "0.0.0.0:8000",
             "production_demo.service:start_server()",
         ]
     ).wait()
