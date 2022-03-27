@@ -35,7 +35,7 @@ looking to improve their unit testing skills.
 2. `cd production-demo`  
 3. `python3 -m venv .`  
 4. `source bin/activate`  
-5. `pip install .`  
+5. `make`  
 
 ### Build testing 
 Install tox with `pip install tox`; 
