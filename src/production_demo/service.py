@@ -32,7 +32,7 @@ class InferenceHandler:
     """Default handler for model inference
 
     This class provides core functions to load model artifactgs,
-    deserialize input data, predict using a trained model, and 
+    deserialize input data, predict using a trained model, and
     output a response.
     """
 
@@ -96,55 +96,49 @@ class InferenceHandler:
         """
         f = StringIO()
         for pred in prediction:
-            f.write(f'{pred:.4f}\n')
+            f.write(f"{pred:.4f}\n")
         return f.getvalue()
 
     def handle_request(self, request, model):
         """Handle a single request
-        
+
         Routes to input, prediction, output methods
 
         :param request: The request object
         :type request: requests.request
 
-        :param model: The trained model 
+        :param model: The trained model
         :type model: sklearn.pipeline.Pipeline
 
         :returns: Output from output_fn
         :rtype: str
         """
-        data = self.input_fn(
-            input_data=request.data, 
-            content_type=request.content_type
-        )
+        data = self.input_fn(input_data=request.data, content_type=request.content_type)
         prediction = self.predict_fn(data, model)
         output = self.output_fn(prediction)
         return output
 
 
 def start_server():
-    """Create Flask application 
-    """
+    """Create Flask application"""
     app = Flask(__name__)
     handler = InferenceHandler()
     model = handler.model_fn("/opt/ml/model")
 
     @app.route("/invocations", methods=["POST"])
     def invoke():
-        """Model service invocation route
-        """
+        """Model service invocation route"""
         start = time()
         output = handler.handle_request(request, model)
         end = time()
         logger.info(f"response_time: {end-start:.4f}")
         return Response(output, status=200, mimetype="text/csv")
-    
+
     return app
 
 
 def main():
-    """Entrypoint for launching Flask service
-    """
+    """Entrypoint for launching Flask service"""
     p = Popen(
         [
             "gunicorn",

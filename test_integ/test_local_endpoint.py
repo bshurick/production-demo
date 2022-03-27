@@ -2,9 +2,8 @@ import requests
 
 
 def test_endpoint():
-    """Local endpoint integration test
-    """
-    # GIVEN 
+    """Local endpoint integration test"""
+    # GIVEN
     TEST_REQUEST = (
         '{"1stFlrSF":896,"2ndFlrSF":0,"BedroomAbvGr":2,'
         '"EnclosedPorch":0,"Fireplaces":0,"FullBath":1,'
@@ -21,14 +20,14 @@ def test_endpoint():
         ':"TA","HouseStyle":"1Story","KitchenQual":"TA",'
         '"LotConfig":"Inside","MasVnrType":"None","MSSubClass":20,'
         '"PavedDrive":"Y","RoofStyle":"Gable"}\n'
-    ) 
+    )
 
-    # WHEN 
+    # WHEN
     result = requests.post(
         "http://127.0.0.1:8000/invocations",
         data=TEST_REQUEST,
         headers={"Content-Type": "application/json"},
     )
 
-    #THEN
+    # THEN
     assert result.content == b"125627.7320"
