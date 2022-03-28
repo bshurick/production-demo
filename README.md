@@ -47,11 +47,14 @@ run build and unit tests using the `tox` command.
 After running, 
 view the test coverage report in `build/coverage/index.html`. 
 
-### Training 
-To run train after building, copy the
+### Dataset 
+Copy the
 [House Prices dataset from Kaggle](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data)
-and unzip into a data/ folder in the package root directory;
-then, run `bin/HouseTrain`.
+and unzip into a data/ folder in the package root directory for use with 
+model training and evaluation. 
+
+### Training 
+To run train after building, copy data locally and run `bin/HouseTrain`.
 
 ### Evaluation 
 Run `bin/HouseEval` to run cross validation and emit results as logs.  
