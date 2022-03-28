@@ -1,4 +1,5 @@
 .PHONY: test build
+all: test build
 
 test:
 	pip install -q -U tox && tox
