@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  integration-test:
+  local-integration-test:
     group: prod-demo
     label_template: ${COUNT}
     lock_behavior: none
