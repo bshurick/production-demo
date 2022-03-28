@@ -54,10 +54,10 @@ and unzip into a data/ folder in the package root directory for use with
 model training and evaluation. 
 
 ### Training 
-To run train after building, copy data locally and run `bin/HouseTrain`.
+To run train after building, [copy the dataset](#dataset) locally, then run `bin/HouseTrain`.
 
 ### Evaluation 
-Run `bin/HouseEval` to run cross validation and emit results as logs.  
+Run `bin/HouseEval` after copying the dataset locally to run cross validation and emit results as logs.  
 Alternatively, run `make evaluate` to save results as a CSV in the `eval/` folder.
 
 ### Launch inference service
