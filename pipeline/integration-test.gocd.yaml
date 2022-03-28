@@ -6,9 +6,9 @@ pipelines:
     lock_behavior: none
     display_order: -1
     materials:
-      deploy:
+      local-deploy:
         ignore_for_scheduling: false
-        pipeline: deploy
+        pipeline: local-deploy
         stage: launch
       git-d646ae5:
         git: https://github.com/bshurick/production-demo

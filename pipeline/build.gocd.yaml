@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  build:
+  local-build:
     group: prod-demo
     label_template: ${COUNT}
     lock_behavior: none
