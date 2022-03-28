@@ -13,6 +13,8 @@ The code is basic and meant to be used as a starting point for larger projects. 
 tests cover both logic and scripting with mocks, which should be helpful for Data Scientists 
 looking to improve their unit testing skills. 
 
+Visit the `github page <https://github.com/bshurick/production-demo>`_ for more info.
+
 .. toctree::
 
    train
