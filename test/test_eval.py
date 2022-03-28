@@ -90,7 +90,7 @@ def test_eval_handler(capsys, monkeypatch):
         "0.1258",
         "0.0347",
         "0.0052",
-        "0.0236",
+        "-0.0236",
         "0.0046",
         EVAL_METRIC,
     ]

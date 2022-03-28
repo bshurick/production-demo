@@ -82,7 +82,6 @@ def handler():
 
     # reformat results for output
     _output_results = dict(**cv_results)
-    _output_results["test_score"] *= -1
     for k, v in cv_results.items():
         if isinstance(v, np.ndarray):
             _output_results[f"{k}_mean"] = f"{v.mean():.4f}"

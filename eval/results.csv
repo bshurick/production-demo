@@ -1,3 +1,3 @@
 fit_time_mean,fit_time_std,score_time_mean,score_time_std,test_score_mean,test_score_std,test_metric,runtime
-0.2854,0.1200,0.0320,0.0014,0.0236,0.0046,neg_mean_squared_log_error,2022-03-27 16:59:39.391397
+0.2507,0.1085,0.0303,0.0027,-0.0236,0.0046,neg_mean_squared_log_error,2022-03-27 19:46:41.291583
 
