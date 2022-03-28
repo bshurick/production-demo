@@ -18,8 +18,8 @@ update-docs: test
 
 clean:
 	rm -rf build && rm -rf docs && rm -rf bin \
-	&& docker stop model-container \
-	&& docker rm model-container
+	&& docker stop prod-demo \
+	&& docker rm prod-demo
 
 format:
 	pip3 install -q -U black && black .
