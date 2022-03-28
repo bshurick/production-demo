@@ -22,3 +22,6 @@ format:
 
 evaluate:
 	bin/HouseEval > eval/results.csv
+
+integ-test:
+	./launch && sleep 2 && pytest -vv test_integ

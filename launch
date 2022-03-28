@@ -2,6 +2,8 @@
 
 # TODO: Create docker build script and launch locally or publish to ECR
 mv configuration/Dockerfile ./
+docker stop model-container
+docker rm model-container
 docker build -t model-container --no-cache .
 docker run -d -p 8000:8000 --name model-container model-container
 mv Dockerfile configuration
