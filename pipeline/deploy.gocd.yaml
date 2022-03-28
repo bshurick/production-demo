@@ -60,7 +60,6 @@ pipelines:
                 arguments:
                 - clean
                 command: make
-                command: docker
                 run_if: passed            
             - exec:
                 arguments:
