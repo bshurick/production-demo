@@ -2,10 +2,10 @@
 all: test build
 
 test:
-	pip install -q -U tox && tox
+	pip3 install -q -U tox && tox
 
 build:
-	pip install -e .
+	pip3 install -e .
 
 update-docs: test
 	git fetch origin doc-page && git checkout doc-page \
@@ -18,10 +18,16 @@ clean:
 	rm -rf build && rm -rf docs && rm -rf bin
 
 format:
-	pip install -q -U black && black .
+	pip3 install -q -U black && black .
+
+train:
+	bin/HouseTrain
 
 evaluate:
 	bin/HouseEval > eval/results.csv
 
+deploy:
+	./launch
+
 integ-test:
-	./launch && sleep 2 && pytest -vv test_integ
+	sleep 2 && pytest -vv test_integ
