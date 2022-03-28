@@ -18,6 +18,7 @@ looking to improve their unit testing skills.
 1. Unit tests with code coverage reporting, automated with [tox](https://tox.wiki/en/latest/)
 1. Auto-generated [package documentation](https://bshurick.github.io/production-demo/) 
 via [Sphinx](https://www.sphinx-doc.org/en/master/)
+1. Pipeline as code via [GoCD](https://www.gocd.org/)
 
 ### Package Components
 * `pyproject.toml`: Build instructions 
@@ -65,7 +66,7 @@ Alternatively, run `make evaluate` to save results as a CSV in the `eval/` folde
 1. Install [Docker](https://docs.docker.com/get-docker/)
 1. Install this package via [instructions](#installation)
 1. Run [training](#training)
-1. Run the launch script (`./launch`) to build a docker container and run locally
+1. Run the deploy make script (`make deploy`) to build a docker container and run locally
 
 ### Local integration test
 After [launching](#launch-inference-service) the inference service docker container locally,

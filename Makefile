@@ -5,7 +5,9 @@ test:
 	pip3 install -q -U tox && tox
 
 build:
-	pip3 install -e .
+	mv configuration/Dockerfile ./ \
+	&& docker build -t prod-demo --no-cache . \
+	&& mv Dockerfile configuration
 
 update-docs: test
 	git fetch origin doc-page && git checkout doc-page \
@@ -15,7 +17,9 @@ update-docs: test
 	&& git checkout main
 
 clean:
-	rm -rf build && rm -rf docs && rm -rf bin
+	rm -rf build && rm -rf docs && rm -rf bin \
+	&& docker stop model-container \
+	&& docker rm model-container
 
 format:
 	pip3 install -q -U black && black .
@@ -26,8 +30,8 @@ train:
 evaluate:
 	bin/HouseEval > eval/results.csv
 
-deploy:
-	./launch
+deploy: build
+	docker run -d -p 8000:8000 --name prod-demo prod-demo
 
 integ-test:
 	sleep 2 && pytest -vv test_integ
