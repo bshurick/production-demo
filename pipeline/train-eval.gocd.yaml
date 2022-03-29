@@ -11,6 +11,10 @@ pipelines:
         shallow_clone: true
         auto_update: true
         branch: main
+      build-test:
+        ignore_for_scheduling: false
+        pipeline: build-test
+        stage: test
     stages:
     - train:
         fetch_materials: true
