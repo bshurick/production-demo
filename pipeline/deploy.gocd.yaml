@@ -1,0 +1,48 @@
+format_version: 10
+pipelines:
+  deploy:
+    group: test-prod-demo
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      packaging:
+        ignore_for_scheduling: false
+        pipeline: packaging
+        stage: build
+    stages:
+    - launch-container:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: true
+        jobs:
+          make-deploy:
+            timeout: 0
+            tasks:
+            - fetch:
+                is_file: true
+                source: Makefile
+                destination: ''
+                pipeline: packaging
+                stage: build
+                job: docker-build
+                artifact_origin: gocd
+                run_if: passed
+            - fetch:
+                is_file: true
+                source: prod-demo-build.tar.gz
+                destination: ''
+                pipeline: packaging
+                stage: build
+                job: docker-build
+                artifact_origin: gocd
+                run_if: passed
+            - exec:
+                arguments:
+                - -o build
+                - deploy
+                command: make
+                run_if: passed

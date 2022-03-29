@@ -40,4 +40,4 @@ deploy:
 	&& docker run -d -p 8000:8000 --name prod-demo prod-demo-build.tar.gz
 
 integ-test:
-	sleep 2 && pytest -vv test_integ
+	pip3 install -q -U pytest && pytest -vv test_integ

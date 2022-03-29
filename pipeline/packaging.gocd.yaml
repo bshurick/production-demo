@@ -1,0 +1,50 @@
+format_version: 10
+pipelines:
+  packaging:
+    group: test-prod-demo
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    environment_variables:
+      MODEL_LOC: /Users/brandonshurick/ProdDemo/production-demo/data/trained_model
+    materials:
+      git-767e938:
+        git: https://github.com/bshurick/production-demo.git
+        shallow_clone: false
+        auto_update: true
+        branch: main
+    stages:
+    - build:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: true
+        jobs:
+          docker-build:
+            timeout: 0
+            artifacts:
+            - build:
+                source: configuration/prod-demo-build.tar.gz
+                destination: ''
+            - build:
+                source: Makefile
+                destination: ''
+            tasks:
+            - exec:
+                arguments:
+                - data
+                command: mkdir
+                run_if: passed
+            - exec:
+                arguments:
+                - -c
+                - cp $MODEL_LOC data/trained_model
+                command: sh
+                run_if: passed
+            - exec:
+                arguments:
+                - build
+                command: make
+                run_if: passed
