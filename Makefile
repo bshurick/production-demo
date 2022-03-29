@@ -8,7 +8,11 @@ build:
 	docker build -t prod-demo --no-cache \
 	--file configuration/Dockerfile \
 	--output configuration/prod-demo-build . \
-	&& tar -cvzf configuration/prod-demo-build.tar.gz configuration/prod-demo-build
+	&& tar -cvzf \
+	configuration/prod-demo-build.tar.gz \
+	configuration/prod-demo-build \
+	2>/dev/null \
+	&& rm -rf configuration/prod-demo-build
 
 update-docs: test
 	git fetch origin doc-page && git checkout doc-page \
