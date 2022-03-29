@@ -81,6 +81,9 @@ to install the server and agent locally
 1. Follow the [pipeline as code](https://docs.gocd.org/current/advanced_usage/pipelines_as_code.html)
 step using `pipeline/*.yaml` files from this repo.
 
+**CI / CD build and test pipeline:**
+<img src="https://github.com/bshurick/production-demo/blob/doc-page/doc/images/pipeline.png?raw=true" />
+
 ## What is the best way to compare model results using this template? 
 
 If you create an eval script like in the example `make evaluate`, results 
