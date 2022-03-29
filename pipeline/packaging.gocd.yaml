@@ -5,8 +5,6 @@ pipelines:
     label_template: ${COUNT}
     lock_behavior: unlockWhenFinished
     display_order: -1
-    environment_variables:
-      MODEL_LOC: /Users/brandonshurick/ProdDemo/production-demo/data/trained_model
     materials:
       git-b0b83b7:
         git: https://github.com/bshurick/production-demo.git
@@ -50,12 +48,6 @@ pipelines:
                 arguments:
                 - data
                 command: mkdir
-                run_if: passed
-            - exec:
-                arguments:
-                - -c
-                - cp $MODEL_LOC data/trained_model
-                command: sh
                 run_if: passed
             - exec:
                 arguments:
