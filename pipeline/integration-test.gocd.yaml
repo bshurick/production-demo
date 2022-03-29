@@ -23,6 +23,15 @@ pipelines:
             timeout: 0
             tasks:
             - fetch:
+                is_file: true
+                source: Makefile
+                destination: ''
+                pipeline: packaging
+                stage: build
+                job: docker-build
+                artifact_origin: gocd
+                run_if: passed
+            - fetch:
                 is_file: false
                 source: test_integ
                 destination: ''
