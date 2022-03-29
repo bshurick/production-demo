@@ -24,7 +24,7 @@ pipelines:
           type: success
           allow_only_on_success: false
         environment_variables:
-          MODEL_LOC: /Users/shurickb/ProdDemo/production-demo/data/trained_model
+          MODEL_LOC: /Users/brandonshurick/ProdDemo/production-demo
         jobs:
           make-build:
             timeout: 0
