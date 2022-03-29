@@ -28,12 +28,14 @@ format:
 
 train:
 	python3 -m venv . \
-	&& pip3 install . 
+	&& source bin/activate \
+	&& pip3 install . \
 	&& bin/HouseTrain
 
 evaluate:
 	python3 -m venv . \
-	&& pip3 install . 
+	&& source bin/activate \
+	&& pip3 install . \
 	&& bin/HouseEval > eval/results.csv
 
 deploy:
