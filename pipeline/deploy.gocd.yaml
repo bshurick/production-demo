@@ -42,6 +42,11 @@ pipelines:
                 run_if: passed
             - exec:
                 arguments:
+                - clean
+                command: make
+                run_if: passed
+            - exec:
+                arguments:
                 - deploy
                 command: make
                 run_if: passed
