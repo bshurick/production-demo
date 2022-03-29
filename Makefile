@@ -6,9 +6,10 @@ test:
 
 build:
 	docker build -t prod-demo --no-cache \
-	--file configuration/Dockerfile . \
-	&& docker export prod-demo > configuration/prod-demo-build.tar \
-	&& gzip configuration/prod-demo-build.tar
+	--file configuration/Dockerfile \
+	--output configuration/prod-demo-build . \
+	&& tar -cvzf configuration/prod-demo-build.tar.gz configuration/prod-demo-build \
+	&& rm -rf configuration/prod-demo-build
 
 update-docs: test
 	git fetch origin doc-page && git checkout doc-page \
@@ -32,7 +33,7 @@ evaluate:
 	bin/HouseEval > eval/results.csv
 
 deploy:
-	docker load < prod-demo-build.tar.gz \
+	docker import prod-demo-build.tar.gz \
 	&& docker run -d -p 8000:8000 --name prod-demo prod-demo
 
 integ-test:

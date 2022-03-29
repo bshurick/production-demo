@@ -80,3 +80,10 @@ Follow these steps to start with the pipelines provided:
 to install the server and agent locally 
 1. Follow the [pipeline as code](https://docs.gocd.org/current/advanced_usage/pipelines_as_code.html)
 step using `pipeline/*.yaml` files from this repo.
+
+## What is the best way to compare model results using this template? 
+
+If you create an eval script like in the example `make evaluate`, results 
+are output to stdout then redirected into a `results.csv` file. The results are then committed 
+to the git repository. If you use git tagging, you can use `git diff` to show differences
+in the results file across different tags, e.g. `git diff tag1..tag2 -- eval/results.csv`.
