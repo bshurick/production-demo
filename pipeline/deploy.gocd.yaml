@@ -42,7 +42,6 @@ pipelines:
                 run_if: passed
             - exec:
                 arguments:
-                - -o build
                 - deploy
                 command: make
                 run_if: passed
