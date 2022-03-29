@@ -36,7 +36,8 @@ evaluate:
 	bin/HouseEval > eval/results.csv
 
 deploy: build
-	docker run -d -p 8000:8000 --name prod-demo prod-demo
+	docker load < prod-demo-build.tar.gz \
+	&& docker run -d -p 8000:8000 --name prod-demo prod-demo-build.tar.gz
 
 integ-test:
 	sleep 2 && pytest -vv test_integ
