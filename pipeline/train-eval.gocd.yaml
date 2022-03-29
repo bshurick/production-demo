@@ -33,8 +33,8 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - build
-                command: make
+                - install -e .
+                command: pip3
                 run_if: passed
             - exec:
                 arguments:
