@@ -3,12 +3,12 @@ pipelines:
   packaging:
     group: test-prod-demo
     label_template: ${COUNT}
-    lock_behavior: none
+    lock_behavior: unlockWhenFinished
     display_order: -1
     environment_variables:
       MODEL_LOC: /Users/brandonshurick/ProdDemo/production-demo/data/trained_model
     materials:
-      git-767e938:
+      git-fac064e:
         git: https://github.com/bshurick/production-demo.git
         shallow_clone: false
         auto_update: true
@@ -30,6 +30,9 @@ pipelines:
                 destination: ''
             - build:
                 source: Makefile
+                destination: ''
+            - build:
+                source: test_integ
                 destination: ''
             tasks:
             - exec:

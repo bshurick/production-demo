@@ -3,10 +3,10 @@ pipelines:
   build-test:
     group: test-prod-demo
     label_template: ${COUNT}
-    lock_behavior: none
+    lock_behavior: unlockWhenFinished
     display_order: -1
     materials:
-      git-821fe03:
+      git-04c9a70:
         git: https://github.com/bshurick/production-demo.git
         shallow_clone: false
         auto_update: true
