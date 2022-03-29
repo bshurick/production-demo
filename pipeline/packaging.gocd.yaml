@@ -1,18 +1,22 @@
 format_version: 10
 pipelines:
   packaging:
-    group: test-prod-demo
+    group: prod-demo
     label_template: ${COUNT}
     lock_behavior: unlockWhenFinished
     display_order: -1
     environment_variables:
       MODEL_LOC: /Users/brandonshurick/ProdDemo/production-demo/data/trained_model
     materials:
-      git-fac064e:
+      git-b0b83b7:
         git: https://github.com/bshurick/production-demo.git
-        shallow_clone: false
+        shallow_clone: true
         auto_update: true
         branch: main
+      build-test:
+        ignore_for_scheduling: false
+        pipeline: build-test
+        stage: test
     stages:
     - build:
         fetch_materials: true

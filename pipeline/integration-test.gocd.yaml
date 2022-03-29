@@ -1,7 +1,7 @@
 format_version: 10
 pipelines:
   integration-test:
-    group: test-prod-demo
+    group: prod-demo
     label_template: ${COUNT}
     lock_behavior: unlockWhenFinished
     display_order: -1
@@ -10,6 +10,10 @@ pipelines:
         ignore_for_scheduling: false
         pipeline: packaging
         stage: build
+      deploy:
+        ignore_for_scheduling: false
+        pipeline: deploy
+        stage: launch-container
     stages:
     - test:
         fetch_materials: true
