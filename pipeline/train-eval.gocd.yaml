@@ -33,7 +33,9 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - install -e .
+                - install 
+                - -e 
+                - .
                 command: pip3
                 run_if: passed
             - exec:
