@@ -35,6 +35,11 @@ pipelines:
             tasks:
             - exec:
                 arguments:
+                - data
+                command: mkdir
+                run_if: passed            
+            - exec:
+                arguments:
                 - -c
                 - mv $DATA_LOC data/train-data.zip
                 command: sh
