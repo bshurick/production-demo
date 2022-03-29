@@ -35,7 +35,7 @@ train:
 evaluate:
 	bin/HouseEval > eval/results.csv
 
-deploy: build
+deploy:
 	docker load < prod-demo-build.tar.gz \
 	&& docker run -d -p 8000:8000 --name prod-demo prod-demo-build.tar.gz
 
