@@ -74,9 +74,10 @@ run `pytest test_integ` to run integration tests on the running service.
 
 ## How do I set up a continuous integration pipeline? 
 
-Pipeline yaml definition files for GoCD are provided in the `pipeline/` folder.  
+Pipeline yaml definition files for [GoCD](https://docs.gocd.org) 
+are provided in the `pipeline/` folder.  
 Follow these steps to start with the pipelines provided:
-1. Follow the install steps for [GoCD](https://docs.gocd.org/current/installation/)
+1. Follow the install steps from [GoCD](https://docs.gocd.org/current/installation/)
 to install the server and agent locally 
 1. Follow the [pipeline as code](https://docs.gocd.org/current/advanced_usage/pipelines_as_code.html)
 step using `pipeline/*.yaml` files from this repo.
