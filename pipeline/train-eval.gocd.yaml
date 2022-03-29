@@ -1,18 +1,18 @@
 format_version: 10
 pipelines:
-  build-test:
+  train-eval:
     group: prod-demo
     label_template: ${COUNT}
-    lock_behavior: unlockWhenFinished
+    lock_behavior: none
     display_order: -1
     materials:
-      git-04c9a70:
+      git-5d31a7d:
         git: https://github.com/bshurick/production-demo.git
         shallow_clone: true
         auto_update: true
         branch: main
     stages:
-    - test:
+    - train:
         fetch_materials: true
         keep_artifacts: false
         clean_workspace: false
@@ -20,11 +20,25 @@ pipelines:
           type: success
           allow_only_on_success: false
         jobs:
-          make-test:
+          run-train:
             timeout: 0
+            artifacts:
+            - build:
+                source: data/trained_model
+                destination: ''
             tasks:
             - exec:
                 arguments:
-                - test
+                - build
+                command: make
+                run_if: passed
+            - exec:
+                arguments:
+                - train
+                command: make
+                run_if: passed
+            - exec:
+                arguments:
+                - evaluate
                 command: make
                 run_if: passed
