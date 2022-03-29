@@ -27,10 +27,14 @@ format:
 	pip3 install -q -U black && black .
 
 train:
-	bin/HouseTrain
+	python3 -m venv . \
+	&& pip3 install . 
+	&& bin/HouseTrain
 
 evaluate:
-	bin/HouseEval > eval/results.csv
+	python3 -m venv . \
+	&& pip3 install . 
+	&& bin/HouseEval > eval/results.csv
 
 deploy:
 	docker import prod-demo-build.tar.gz \
