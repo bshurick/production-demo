@@ -5,7 +5,11 @@ test:
 	pip3 install -q -U tox && tox
 
 build:
-	docker build -t prod-demo --no-cache - < configuration/Dockerfile
+	docker build -t prod-demo --no-cache \
+	--file configuration/Dockerfile \
+	--compress \
+	--output configuration/prod-demo-build.tar.gz \
+	.
 
 update-docs: test
 	git fetch origin doc-page && git checkout doc-page \
