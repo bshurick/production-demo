@@ -11,7 +11,7 @@ build:
 	&& tar -cvzf configuration/prod-demo-build.tar.gz configuration/prod-demo-build \
 	&& rm -rf configuration/prod-demo-build
 
-update-docs: test
+update-docs:
 	git fetch origin doc-page && git checkout doc-page \
 	&& rm -rf ./docs && mkdir ./docs && cp -r build/docs ./ \
 	&& git add --all ./docs/* && git commit -m 'Update docs' \
