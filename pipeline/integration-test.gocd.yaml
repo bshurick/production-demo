@@ -4,7 +4,7 @@ pipelines:
     group: prod-demo
     label_template: ${COUNT}
     lock_behavior: unlockWhenFinished
-    display_order: -1
+    display_order: 5
     materials:
       packaging:
         ignore_for_scheduling: false

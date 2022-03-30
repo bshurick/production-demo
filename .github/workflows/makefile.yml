@@ -1,0 +1,27 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install prereqs
+      run: sudo apt-get -y install --no-install-recommends -y python3.9
+
+    - name: Run sanboxed build tests
+      run: make test
+
+    - name: Run CodeCov
+      run: codecov
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v2

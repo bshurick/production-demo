@@ -10,7 +10,7 @@ build:
 	docker build -t prod-demo --no-cache \
 	--file configuration/Dockerfile \
 	--output configuration/prod-demo-build . \
-	&& tar -cvzf configuration/prod-demo-build.tar.gz configuration/prod-demo-build \
+	&& tar -cvzf configuration/prod-demo-build.tar.gz configuration/prod-demo-build 2>/dev/null \
 	&& rm -rf configuration/prod-demo-build
 
 # Generate documentation and upload to git documentation page
@@ -45,7 +45,8 @@ evaluate:
 	python3 -m venv . \
 	&& source bin/activate \
 	&& pip3 install . \
-	&& bin/HouseEval > eval/results.csv
+	&& bin/HouseEval > eval/results.csv \
+	&& cat eval/results.csv
 
 # Run a docker image from tarfile 
 deploy:
