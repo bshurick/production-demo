@@ -10,7 +10,10 @@ from unittest.mock import MagicMock, call, ANY
 
 
 def test_inference_model_fn(monkeypatch):
-    """Test model function handler"""
+    """Test model function handler
+    
+    Test that `model_fn` imports a model from some file location.
+    """
     # GIVEN
     mock_load = MagicMock()
     monkeypatch.setattr(service, "load", mock_load)
@@ -26,7 +29,11 @@ def test_inference_model_fn(monkeypatch):
 
 
 def test_inference_predict_fn(monkeypatch):
-    """Test inference function handler"""
+    """Test inference function handler
+    
+    Test that `predict_fn` launches a sklearn.pipeline.Pipeline predict 
+    method using input data.
+    """
     # GIVEN
     mock_predict = MagicMock()
     mock_data = MagicMock()
@@ -46,7 +53,10 @@ def test_inference_predict_fn(monkeypatch):
 
 
 def test_inference_input_fn():
-    """Test input parsing function"""
+    """Test input parsing function
+    
+    Test that `input_fn` can read JSON and outputs a pd.DataFrame.
+    """
     # GIVEN
     input_data_js = b'{"1stFlrSF":896,"2ndFlrSF":0,"BedroomAbvGr":2}\n'
 
@@ -61,7 +71,10 @@ def test_inference_input_fn():
 
 
 def test_inference_output_fn():
-    """Test output serialization function"""
+    """Test output serialization function
+    
+    Test that `output_fn` can process predictions data into a CSV string.
+    """
     # GIVEN
     prediction = np.array([150000.25838, 200000.5])
 
@@ -74,7 +87,10 @@ def test_inference_output_fn():
 
 
 def test_flask_app(monkeypatch):
-    """Test Flask application creation"""
+    """Test Flask application creation
+    
+    Test creation of flask application with routes
+    """
     # GIVEN
     mock_flask = MagicMock()
     mock_model = MagicMock()
@@ -125,7 +141,10 @@ def test_request_handler(monkeypatch):
 
 
 def test_main(monkeypatch):
-    """Mock our entrypoint"""
+    """Mock our entrypoint
+    
+    Test launching a web application with Gunicorn
+    """
     # GIVEN
     mock_subproc = MagicMock()
     monkeypatch.setattr(service, "Popen", mock_subproc)
