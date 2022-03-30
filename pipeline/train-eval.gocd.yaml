@@ -61,3 +61,8 @@ pipelines:
                 - evaluate
                 command: make
                 run_if: passed
+            - exec:
+                arguments:
+                - eval/results.csv
+                command: git
+                run_if: passed
