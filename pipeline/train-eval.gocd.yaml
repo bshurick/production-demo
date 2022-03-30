@@ -63,6 +63,7 @@ pipelines:
                 run_if: passed
             - exec:
                 arguments:
+                - diff
                 - eval/results.csv
                 command: git
                 run_if: passed
