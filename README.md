@@ -45,6 +45,7 @@ via [Sphinx](https://www.sphinx-doc.org/en/master/)
 * `src/`: Production code with train and evaluate scripts, and invoke function
 * `doc/`: Sphinx documentation example; built during `tox` testing
 * `test/`: Python unit tests 
+* `test_integ/` Integration tests for a live inference service
 * `Makefile`: Contains commands to build and test this package
 
 ## How do I install and run this package?
