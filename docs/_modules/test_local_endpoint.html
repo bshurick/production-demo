@@ -35,7 +35,13 @@
 
 
 <div class="viewcode-block" id="test_endpoint"><a class="viewcode-back" href="../modules/test_local_endpoint.test_endpoint.html#test_local_endpoint.test_endpoint">[docs]</a><span class="k">def</span> <span class="nf">test_endpoint</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Local endpoint integration test&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Local endpoint integration test</span>
+
+<span class="sd">    Test that sending data to the live model service returns</span>
+<span class="sd">    the expected result. Any changes to model parameters may</span>
+<span class="sd">    result in a failed test here - if that happens, the test</span>
+<span class="sd">    should be updated to match the new result.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># GIVEN</span>
     <span class="n">TEST_REQUEST</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s1">&#39;{&quot;1stFlrSF&quot;:896,&quot;2ndFlrSF&quot;:0,&quot;BedroomAbvGr&quot;:2,&#39;</span>
