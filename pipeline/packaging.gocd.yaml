@@ -16,7 +16,7 @@ pipelines:
         pipeline: build-test
         stage: test
       train:
-        ignore_for_scheduling: true
+        ignore_for_scheduling: false
         pipeline: train-eval
         stage: train
     stages:
