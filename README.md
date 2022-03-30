@@ -112,8 +112,8 @@ The example CI/CD pipeline includes:
 1. Code build and unit tests
 1. Automated training and evaluation 
 1. Bundling of trained model artifacts 
-1. Local deployment of model service 
-1. Local integration test
+1. Deployment of hosted model service 
+1. Integration tests of model service
 
 **CI / CD build and test pipeline:**
 <img src="https://raw.githubusercontent.com/bshurick/production-demo/main/doc/images/pipeline.png" />
@@ -130,5 +130,5 @@ Follow these steps to start with the pipelines provided:
 1. In Rules set Allow -> Pipeline Group -> prod-demo
 1. In 'Agents' tab select a running agent and hit 'Enable'
 
-Note that the docker containers would be easy to run in a cloud environment, with agents installed 
+Note that docker containers would be easy to deploy in a cloud environment, with agents installed 
 on production environments and the server running on a separate "Pipelines" environment. 
