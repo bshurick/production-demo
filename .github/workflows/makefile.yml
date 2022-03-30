@@ -14,5 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Install prereqs
+      run: apt-get -y install --no-install-recommends -y python3.9
+
     - name: Run sanboxed build tests
       run: make test
