@@ -41,7 +41,7 @@ pipelines:
             - exec:
                 arguments:
                 - -c
-                - mv $DATA_LOC data/train-data.zip
+                - cp $DATA_LOC data/train-data.zip
                 command: sh
                 run_if: passed
             - exec:
