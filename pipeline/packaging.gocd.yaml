@@ -42,8 +42,17 @@ pipelines:
                 destination: ''
             - build:
                 source: data
-                destination: ''
+                destination: ''           
             tasks:
+            - fetch:
+                is_file: false
+                source: data
+                destination: ''
+                pipeline: train-eval
+                stage: train
+                job: run-train
+                artifact_origin: gocd
+                run_if: passed                 
             - exec:
                 arguments:
                 - build
