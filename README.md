@@ -46,7 +46,7 @@ via [Sphinx](https://www.sphinx-doc.org/en/master/)
 * `src/`: Production code with train and evaluate scripts, and invoke function
 * `doc/`: Sphinx documentation example; built during `tox` testing
 * `test/`: Python unit tests 
-* `launch`: Build the inference docker container and launch service locally or publish to ECR
+* `Makefile`: Contains commands to build and test this package
 
 ## How do I install and run this package?
 
