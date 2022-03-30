@@ -43,22 +43,14 @@ pipelines:
                 - -c
                 - cp $DATA_LOC data/train-data.zip
                 command: sh
-                run_if: passed
-            - exec:
-                arguments:
-                - data
-                command: cd
-                run_if: passed                 
+                run_if: passed              
             - exec:
                 arguments:
                 - train-data.zip
+                - -d 
+                - data                
                 command: unzip
-                run_if: passed
-            - exec:
-                arguments:
-                - ..
-                command: cd
-                run_if: passed                                         
+                run_if: passed                                       
             - exec:
                 arguments:
                 - train
