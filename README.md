@@ -84,7 +84,10 @@ The example CI/CD pipeline includes:
 1. Automated training and evaluation 
 1. Bundling of trained model artifacts 
 1. Local deployment of model service 
-1. Local integration test 
+1. Local integration test
+
+**CI / CD build and test pipeline:**
+<img src="https://raw.githubusercontent.com/bshurick/production-demo/main/doc/images/pipeline.png" />
 
 ## How can I set up a continuous integration pipeline? 
 
@@ -99,9 +102,6 @@ step using `pipeline/*.yaml` files from this repo.
 pipeline in the "packaging" step in order to remove automatic retraining. 
 Model artifacts would then need to be trained manually and added to packaging, e.g. as environment arguments 
 from S3 or a local filesystem. 
-
-**CI / CD build and test pipeline:**
-<img src="https://raw.githubusercontent.com/bshurick/production-demo/main/doc/images/pipeline.png" />
 
 ## What is the best way to compare model results using this template? 
 
