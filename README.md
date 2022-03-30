@@ -1,6 +1,7 @@
 # Production Data Science
 A demonstration for Data Scientists of how to create and test a production 
-machine learning model, from notebook to completed python package and hosted inference service.
+machine learning model, from notebook to completed python package, hosted inference service, 
+and continuous integration and deployment pipelines. 
 
 ## Table of Contents
 * [What is this package?](#what-is-this-package)
