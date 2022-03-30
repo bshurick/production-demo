@@ -28,6 +28,10 @@ pipelines:
         jobs:
           run-train:
             timeout: 0
+            artifacts:
+            - build:
+                source: data
+                destination: ''
             tasks:
             - exec:
                 arguments:
