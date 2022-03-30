@@ -15,11 +15,9 @@ unit and integration tests, and continuous integration and deployment pipelines.
   * [Evaluation](#evaluation)
   * [Launch inference service](#launch-inference-service)
   * [Integration test](#local-integration-test)
+* [What is the best way to compare model results using this template?](#what-is-the-best-way-to-compare-model-results-using-this-template)  
 * [What steps can be automated with continuous integration and deployment pipelines?](#what-steps-can-be-automated-with-continuous-integration-and-deployment-pipelines)
 * [How can I set up a continuous integration pipeline?](#how-can-i-set-up-a-continuous-integration-pipeline)
-* [What is the best way to compare model results using this template?](#what-is-the-best-way-to-compare-model-results-using-this-template)
-
-
 
 ## What is this package? 
 This package is a simple demonstration of a production machine learning package, 
@@ -91,6 +89,13 @@ Alternatively, run `make evaluate` to save results as a CSV in the `eval/` folde
 After [launching](#launch-inference-service) the inference service docker container locally,
 run `pytest test_integ` to run integration tests on the running service.  
 
+## What is the best way to compare model results using this template? 
+
+If you create an eval script like in the example `make evaluate`, results 
+are output to stdout then redirected into a `results.csv` file. The results are then committed 
+to the git repository. If you use git tagging, you can use `git diff` to show differences
+in the results file across different tags, e.g. `git diff tag1..tag2 -- eval/results.csv`.
+
 ## What steps can be automated with continuous integration and deployment pipelines?
 
 The [GoCD](https://docs.gocd.org) CI/CD pipeline automates all steps in the 
@@ -122,10 +127,3 @@ Follow these steps to start with the pipelines provided:
 
 Note that the docker containers would be easy to run in a cloud environment, with agents installed 
 on production environments and the server running on a separate "Pipelines" environment. 
-
-## What is the best way to compare model results using this template? 
-
-If you create an eval script like in the example `make evaluate`, results 
-are output to stdout then redirected into a `results.csv` file. The results are then committed 
-to the git repository. If you use git tagging, you can use `git diff` to show differences
-in the results file across different tags, e.g. `git diff tag1..tag2 -- eval/results.csv`.
