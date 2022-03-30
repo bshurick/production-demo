@@ -4,7 +4,7 @@ pipelines:
     group: prod-demo
     label_template: ${COUNT}
     lock_behavior: unlockWhenFinished
-    display_order: -1
+    display_order: 1
     materials:
       git-04c9a70:
         git: https://github.com/bshurick/production-demo.git
