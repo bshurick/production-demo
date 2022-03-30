@@ -3,11 +3,11 @@ import requests
 
 def test_endpoint():
     """Local endpoint integration test
-    
-    Test that sending data to the live model service returns 
-    the expected result. Any changes to model parameters may 
-    result in a failed test here - if that happens, the test 
-    should be updated to match the new result. 
+
+    Test that sending data to the live model service returns
+    the expected result. Any changes to model parameters may
+    result in a failed test here - if that happens, the test
+    should be updated to match the new result.
     """
     # GIVEN
     TEST_REQUEST = (

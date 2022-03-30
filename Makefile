@@ -11,7 +11,7 @@ build:
 	&& tar -cvzf configuration/prod-demo-build.tar.gz configuration/prod-demo-build \
 	&& rm -rf configuration/prod-demo-build
 
-update-docs:
+update-docs: test
 	git fetch origin doc-page && git checkout doc-page \
 	&& rm -rf ./docs && mkdir ./docs && cp -r build/docs ./ \
 	&& git add --all ./docs/* && git commit -m 'Update docs' \
@@ -24,7 +24,9 @@ clean:
 	&& docker rm prod-demo
 
 format:
-	pip3 install -q -U black && black .
+	pip3 install -q -U black jupyter \
+	&& black . \
+	&& jupyter nbconvert --to markdown notebooks/*.ipynb
 
 train:
 	python3 -m venv . \

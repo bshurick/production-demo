@@ -11,7 +11,7 @@ from unittest.mock import MagicMock, call, ANY
 
 def test_inference_model_fn(monkeypatch):
     """Test model function handler
-    
+
     Test that `model_fn` imports a model from some file location.
     """
     # GIVEN
@@ -30,8 +30,8 @@ def test_inference_model_fn(monkeypatch):
 
 def test_inference_predict_fn(monkeypatch):
     """Test inference function handler
-    
-    Test that `predict_fn` launches a sklearn.pipeline.Pipeline predict 
+
+    Test that `predict_fn` launches a sklearn.pipeline.Pipeline predict
     method using input data.
     """
     # GIVEN
@@ -54,7 +54,7 @@ def test_inference_predict_fn(monkeypatch):
 
 def test_inference_input_fn():
     """Test input parsing function
-    
+
     Test that `input_fn` can read JSON and outputs a pd.DataFrame.
     """
     # GIVEN
@@ -72,7 +72,7 @@ def test_inference_input_fn():
 
 def test_inference_output_fn():
     """Test output serialization function
-    
+
     Test that `output_fn` can process predictions data into a CSV string.
     """
     # GIVEN
@@ -88,7 +88,7 @@ def test_inference_output_fn():
 
 def test_flask_app(monkeypatch):
     """Test Flask application creation
-    
+
     Test creation of flask application with routes
     """
     # GIVEN
@@ -142,7 +142,7 @@ def test_request_handler(monkeypatch):
 
 def test_main(monkeypatch):
     """Mock our entrypoint
-    
+
     Test launching a web application with Gunicorn
     """
     # GIVEN
