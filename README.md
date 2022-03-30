@@ -92,7 +92,7 @@ run `pytest test_integ` to run integration tests on the running service.
 
 ## What steps can be automated with continuous integration and deployment pipelines?
 
-The [GoCD](https://docs.gocd.org) CI/DI pipeline automates all steps in the 
+The [GoCD](https://docs.gocd.org) CI/CD pipeline automates all steps in the 
 [How do I install...](#how-do-i-install-and-run-this-package) section above, where 
 each step must succeed before the next step will execute, and any git push will 
 automatically start the pipeline at step 1. 
