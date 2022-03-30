@@ -2,6 +2,24 @@
 A demonstration for Data Scientists of how to create and test a production 
 machine learning model, from notebook to completed python package and hosted inference service.
 
+## Table of Contents
+* [What is this package?](#what-is-this-package)
+  * [Demo Highlights](#demo-highlights)
+  * [Package Components](#package-components)
+* [How do I install and run this package?](#how-do-i-install-and-run-this-package)
+  * [Installation](#installation)
+  * [Build testing](#build-testing)
+  * [Dataset](#dataset)
+  * [Training](#training)
+  * [Evaluation](#evaluation)
+  * [Launch inference service](#launch-inference-service)
+  * [Integration test](#local-integration-test)
+* [What steps can be automated with continuous integration and deployment pipelines?](#what-steps-can-be-automated-with-continuous-integration-and-deployment-pipelines)
+* [How can I set up a continuous integration pipeline?](#how-can-i-set-up-a-continuous-integration-pipeline)
+* [What is the best way to compare model results using this template?](#what-is-the-best-way-to-compare-model-results-using-this-template)
+
+
+
 ## What is this package? 
 This package is a simple demonstration of a production machine learning package, 
 from notebook to training functions with unit tests and implemented invoke service. 
@@ -100,6 +118,9 @@ Follow these steps to start with the pipelines provided:
 1. In Admin -> Config Repositories add this repository (branch 'main') with `pipeline/*.yaml` in "GoCD YAML files pattern" 
 1. In Rules set Allow -> Pipeline Group -> prod-demo
 1. In 'Agents' tab select a running agent and hit 'Enable'
+
+Note that the docker containers would be easy to run in a cloud environment, with agents installed 
+on production environments and the server running on a separate "Pipelines" environment. 
 
 ## What is the best way to compare model results using this template? 
 
