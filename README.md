@@ -93,8 +93,12 @@ run `pytest test_integ` to run integration tests on the running service.
 
 If you create an eval script like in the example `make evaluate`, results 
 are output to stdout then redirected into a `results.csv` file. The results are then committed 
-to the git repository. If you use git tagging, you can use `git diff` to show differences
-in the results file across different tags, e.g. `git diff tag1..tag2 -- eval/results.csv`.
+to the git repository.  
+
+If you use git tagging, you can use `git diff` to show differences
+in the results file across different tags, e.g. `git diff tag1..tag2 -- eval/results.csv`.  
+
+Model results should be added to pull requests to quickly view how each change impacts the results.
 
 ## What steps can be automated with continuous integration and deployment pipelines?
 
