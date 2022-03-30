@@ -18,7 +18,7 @@ from subprocess import Popen
 from time import time
 
 from joblib import load
-from production_demo.constants import NUMERICS, CATEGORIES, TRAINED_MODEL_NAME
+from production_demo.constants import TRAINED_MODEL_NAME
 
 # set up logging format
 logging.basicConfig(
@@ -36,7 +36,8 @@ class InferenceHandler:
     output a response.
     """
 
-    def model_fn(self, model_dir):
+    @staticmethod
+    def model_fn(model_dir):
         """Load a Production model
 
         Load a model using joblib. The model artifacts are already saved locally
@@ -50,7 +51,8 @@ class InferenceHandler:
         model = load(os.path.join(model_dir, TRAINED_MODEL_NAME))
         return model
 
-    def predict_fn(self, data, model):
+    @staticmethod
+    def predict_fn(data, model):
         """Make prediction with model
 
         Predicting with an Sklearn model is straightforward.
@@ -66,7 +68,8 @@ class InferenceHandler:
         """
         return model.predict(data)
 
-    def input_fn(self, input_data, content_type):
+    @staticmethod
+    def input_fn(input_data, content_type):
         """A default input_fn that can handle JSON format.
 
         :param input_data: The request payload serialized in the content_type format
@@ -79,13 +82,14 @@ class InferenceHandler:
         :rtype: pandas.DataFrame
         """
         assert content_type in ["application/json"]
-        f = StringIO()
-        f.write(input_data.decode())
-        f.seek(0)
-        input_df = pd.read_json(f, lines=True)
+        file_obj = StringIO()
+        file_obj.write(input_data.decode())
+        file_obj.seek(0)
+        input_df = pd.read_json(file_obj, lines=True)
         return input_df
 
-    def output_fn(self, prediction):
+    @staticmethod
+    def output_fn(prediction):
         """Serializes predictions from predict_fn to CSV
 
         :param prediction: A prediction result from predict_fn
@@ -94,12 +98,12 @@ class InferenceHandler:
         :returns: Output data serialized
         :rtype: str
         """
-        f = StringIO()
+        file_obj = StringIO()
         for pred in prediction:
-            f.write(f"{pred:.4f}\n")
-        return f.getvalue()
+            file_obj.write(f"{pred:.4f}\n")
+        return file_obj.getvalue()
 
-    def handle_request(self, request, model):
+    def handle_request(self, request_obj, model):
         """Handle a single request
 
         Routes to input, prediction, output methods
@@ -113,7 +117,9 @@ class InferenceHandler:
         :returns: Output from output_fn
         :rtype: str
         """
-        data = self.input_fn(input_data=request.data, content_type=request.content_type)
+        data = self.input_fn(
+            input_data=request_obj.data, content_type=request_obj.content_type
+        )
         prediction = self.predict_fn(data, model)
         output = self.output_fn(prediction)
         return output
@@ -131,7 +137,7 @@ def start_server():
         start = time()
         output = handler.handle_request(request, model)
         end = time()
-        logger.info(f"response_time: {end-start:.4f}")
+        logger.info("response_time: %.4f-%.4f", end, start)
         return Response(output, status=200, mimetype="text/csv")
 
     return app
@@ -139,7 +145,7 @@ def start_server():
 
 def main():
     """Entrypoint for launching Flask service"""
-    p = Popen(
+    proc = Popen(
         [
             "gunicorn",
             "-w",
@@ -150,4 +156,4 @@ def main():
         ]
     ).wait()
     # register quit as exception
-    raise Exception(p)
+    raise Exception(proc)

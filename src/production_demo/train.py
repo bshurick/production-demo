@@ -82,9 +82,9 @@ class CategoriesTransformer(BaseEstimator, TransformerMixin):
         Loop through categorical column and replace with numeric hash buckets.
         """
         _X = X.copy()
-        for c in self.category_cols:
-            _X[c].fillna("", inplace=True)
-            _X[c] = _X[c].apply(lambda x: self.hash_col(x, self.n_buckets))
+        for col in self.category_cols:
+            _X[col].fillna("", inplace=True)
+            _X[col] = _X[col].apply(lambda x: self.hash_col(x, self.n_buckets))
         return _X
 
 

@@ -6,11 +6,10 @@ from `production_demo.constants` and emit the cross validation
 results to logs.
 """
 
-import json
 import logging
+import sys
 import numpy as np
 import pandas as pd
-import sys
 
 from datetime import datetime
 from lightgbm import LGBMRegressor
@@ -82,11 +81,11 @@ def handler():
 
     # reformat results for output
     _output_results = dict(**cv_results)
-    for k, v in cv_results.items():
-        if isinstance(v, np.ndarray):
-            _output_results[f"{k}_mean"] = f"{v.mean():.4f}"
-            _output_results[f"{k}_std"] = f"{v.std():.4f}"
-            _output_results.pop(k)
+    for key, val in cv_results.items():
+        if isinstance(val, np.ndarray):
+            _output_results[f"{key}_mean"] = f"{val.mean():.4f}"
+            _output_results[f"{key}_std"] = f"{val.std():.4f}"
+            _output_results.pop(key)
 
     _output_results["test_metric"] = EVAL_METRIC
     _output_results["runtime"] = str(datetime.now())
