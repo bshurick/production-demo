@@ -26,7 +26,7 @@ This invoke service is meant to be adapted into a
 [SageMaker custom inference container](https://docs.aws.amazon.com/sagemaker/latest/dg/adapt-inference-container.html).
 
 The code is basic and meant to be used as a starting point for larger projects. Unit 
-tests cover both logic and scripting with mocks, which should be helpful for Data Scientists 
+tests cover both logic and scripting with mocked resources, which should be helpful for Data Scientists 
 looking to improve their unit testing skills. 
 
 ### Demo Highlights
