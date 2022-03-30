@@ -94,14 +94,11 @@ The example CI/CD pipeline includes:
 Pipeline yaml definition files for [GoCD](https://docs.gocd.org) 
 are provided in the `pipeline/` folder.  
 Follow these steps to start with the pipelines provided:
-1. Follow the install steps from [GoCD](https://docs.gocd.org/current/installation/)
-to install the server and agent locally 
-1. Follow the [pipeline as code](https://docs.gocd.org/current/advanced_usage/pipelines_as_code.html)
-step using `pipeline/*.yaml` files from this repo.
-1. Automatic retraining and evaluation is enabled by default; remove references to the "train-eval" 
-pipeline in the "packaging" step in order to remove automatic retraining. 
-Model artifacts would then need to be trained manually and added to packaging, e.g. as environment arguments 
-from S3 or a local filesystem. 
+1. Launch a GoCD server docker container, e.g. `docker run -d -p8153:8153 gocd/gocd-server:v22.1.0`
+1. Launch a GoCD agent; read instructions on [GoCD's dockerhub](https://hub.docker.com/r/gocd/gocd-agent-ubuntu-20.04)
+1. Launch interface in web browser, at `http://localhost:8153`
+1. In Admin -> Config Repositories add this repository (branch 'main') with `pipeline/*.yaml` in "GoCD YAML files pattern" 
+1. In Rules set Allow -> Pipeline Group -> prod-demo
 
 ## What is the best way to compare model results using this template? 
 
