@@ -101,7 +101,7 @@ Model artifacts would then need to be trained manually and added to packaging, e
 from S3 or a local filesystem. 
 
 **CI / CD build and test pipeline:**
-<img src="https://github.com/bshurick/production-demo/blob/doc-page/doc/images/pipeline.png?raw=true" />
+<img src="https://raw.githubusercontent.com/bshurick/production-demo/main/doc/images/pipeline.png" />
 
 ## What is the best way to compare model results using this template? 
 
