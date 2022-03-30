@@ -9,8 +9,8 @@ unit and integration tests, and continuous integration and deployment pipelines.
   * [Package Components](#package-components)
 * [How do I install and run this package?](#how-do-i-install-and-run-this-package)
   * [Installation](#installation)
-  * [Build testing](#build-testing)
   * [Dataset](#dataset)
+  * [Build testing](#build-testing)
   * [Training](#training)
   * [Evaluation](#evaluation)
   * [Launch inference service](#launch-inference-service)
@@ -58,19 +58,19 @@ works already, then it's already installed.
 2. `cd production-demo`  
 3. `python3 -m venv .`  
 4. `source bin/activate`  
-5. `make`  
-
-### Build testing 
-Install tox with `pip install tox`; 
-run build and unit tests using the `tox` command.  
-After running, 
-view the test coverage report in `build/coverage/index.html`. 
+5. `make` 
 
 ### Dataset 
 Copy the
 [House Prices dataset from Kaggle](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data)
 and unzip into a data/ folder in the package root directory for use with 
 model training and evaluation. 
+
+### Build testing 
+Install tox with `pip install tox`; 
+run build and unit tests using the `tox` command.  
+After running, 
+view the test coverage report in `build/coverage/index.html`. 
 
 ### Training 
 To run train after building, [copy the dataset](#dataset) locally, then run `bin/HouseTrain`.
