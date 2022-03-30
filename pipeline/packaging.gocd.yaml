@@ -18,7 +18,7 @@ pipelines:
       train:
         ignore_for_scheduling: true
         pipeline: train-eval
-        stage: train
+        stage: run-train
     stages:
     - build:
         fetch_materials: true
@@ -41,14 +41,9 @@ pipelines:
                 source: test_integ
                 destination: ''
             - build:
-                source: data/trained_model
+                source: data
                 destination: ''
             tasks:
-            - exec:
-                arguments:
-                - data
-                command: mkdir
-                run_if: passed
             - exec:
                 arguments:
                 - build

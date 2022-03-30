@@ -28,10 +28,6 @@ pipelines:
         jobs:
           run-train:
             timeout: 0
-            artifacts:
-            - build:
-                source: data/trained_model
-                destination: ''
             tasks:
             - exec:
                 arguments:

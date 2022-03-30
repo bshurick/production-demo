@@ -72,7 +72,7 @@ Alternatively, run `make evaluate` to save results as a CSV in the `eval/` folde
 After [launching](#launch-inference-service) the inference service docker container locally,
 run `pytest test_integ` to run integration tests on the running service.  
 
-## How do I set up a continuous integration pipeline? 
+## How can I set up a continuous integration pipeline? 
 
 Pipeline yaml definition files for [GoCD](https://docs.gocd.org) 
 are provided in the `pipeline/` folder.  
@@ -81,6 +81,10 @@ Follow these steps to start with the pipelines provided:
 to install the server and agent locally 
 1. Follow the [pipeline as code](https://docs.gocd.org/current/advanced_usage/pipelines_as_code.html)
 step using `pipeline/*.yaml` files from this repo.
+1. Automatic retraining and evaluation is enabled by default; remove references to the "train-eval" 
+pipeline in the "packaging" step in order to remove automatic retraining. 
+Model artifacts would then need to be trained manually and added to packaging, e.g. as environment arguments 
+from S3 or a local filesystem. 
 
 **CI / CD build and test pipeline:**
 <img src="https://github.com/bshurick/production-demo/blob/doc-page/doc/images/pipeline.png?raw=true" />
