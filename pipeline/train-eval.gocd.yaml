@@ -23,7 +23,7 @@ pipelines:
         keep_artifacts: false
         clean_workspace: false
         approval:
-          type: manual
+          type: success
           allow_only_on_success: false
         jobs:
           run-train:
