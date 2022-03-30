@@ -19,11 +19,3 @@ jobs:
 
     - name: Run sanboxed build tests
       run: make test
-
-    - name: Run CodeCov
-      run: |
-        pip install codecov
-        codecov
-    
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v2
