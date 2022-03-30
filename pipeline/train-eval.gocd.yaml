@@ -46,9 +46,19 @@ pipelines:
                 run_if: passed
             - exec:
                 arguments:
-                - data/train-data.zip
+                - data
+                command: cd
+                run_if: passed                 
+            - exec:
+                arguments:
+                - train-data.zip
                 command: unzip
-                run_if: passed                         
+                run_if: passed
+            - exec:
+                arguments:
+                - ..
+                command: cd
+                run_if: passed                                         
             - exec:
                 arguments:
                 - train
