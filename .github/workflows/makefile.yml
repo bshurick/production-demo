@@ -21,7 +21,9 @@ jobs:
       run: make test
 
     - name: Run CodeCov
-      run: codecov
+      run: |
+        pip install codecov
+        codecov
     
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
