@@ -18,7 +18,7 @@ pipelines:
       train:
         ignore_for_scheduling: true
         pipeline: train-eval
-        stage: run-train
+        stage: train
     stages:
     - build:
         fetch_materials: true
