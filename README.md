@@ -99,6 +99,7 @@ Follow these steps to start with the pipelines provided:
 1. Launch interface in web browser, at `http://localhost:8153`
 1. In Admin -> Config Repositories add this repository (branch 'main') with `pipeline/*.yaml` in "GoCD YAML files pattern" 
 1. In Rules set Allow -> Pipeline Group -> prod-demo
+1. In 'Agents' tab select a running agent and hit 'Enable'
 
 ## What is the best way to compare model results using this template? 
 
