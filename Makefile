@@ -23,9 +23,12 @@ update-docs: test
 
 # Clean up build artifacts and remove docker container 
 clean:
-	rm -rf build && rm -rf docs && rm -rf bin \
+	rm -rf build \
+	&& rm -rf docs \
+	&& rm -rf bin \
+	&& rm -rf .tox \
 	&& docker stop prod-demo \
-	&& docker rm prod-demo
+	&& docker rm prod-demo || exit 0	
 
 # Run 'black' to format code and export notebook as markdown 
 format:
