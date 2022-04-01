@@ -14,10 +14,7 @@ RUN apt-get update && \
     python3-dev \
     python3-venv \
     make \
-    ca-certificates \
     curl \
-    lxc \
-    iptables \
     && rm -rf /var/lib/apt/lists/*
 
 # Install docker 
@@ -30,6 +27,3 @@ RUN python get-pip.py
 
 # Update local path 
 ENV PATH="/home/go/.local/bin:$PATH"
-
-# Set user as non-root
-USER go
