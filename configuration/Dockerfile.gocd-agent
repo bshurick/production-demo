@@ -8,13 +8,20 @@ USER root
 
 # Install prereqs 
 RUN apt-get update && \
-    apt-get -y install --no-install-recommends \
+    apt-get install -qqy \
     libgomp1 \
     python3.9 \
     python3-dev \
     python3-venv \
     make \
+    ca-certificates \
+    curl \
+    lxc \
+    iptables \
     && rm -rf /var/lib/apt/lists/*
+
+# Install docker 
+RUN curl -sSL https://get.docker.com/ | sh
 
 # Install pip 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
