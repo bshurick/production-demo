@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 .PHONY: test build
 all: test build
 
