@@ -14,5 +14,6 @@ RUN apt-get update && \
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
 RUN python get-pip.py
+ENV PATH="/home/go/.local/bin:$PATH"
 
 USER go
