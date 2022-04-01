@@ -64,7 +64,7 @@ works already, then it's already installed.
 ### Dataset 
 Copy the
 [House Prices dataset from Kaggle](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data)
-and unzip into a data/ folder in the package root directory for use with 
+and unzip into the /tmp folder in the package root directory for use with 
 model training and evaluation. 
 
 ### Build testing 
@@ -138,6 +138,8 @@ docker run -d \
 4. In Admin -> Config Repositories add this repository (url "https://github.com/bshurick/production-demo.git", branch 'main') with `pipeline/*.yaml` in "GoCD YAML files pattern" 
 5. In Rules set Allow -> Pipeline Group -> prod-demo
 6. In 'Agents' tab select a running agent and hit 'Enable'
+
+The `docker run` command shown above assumes the [source data](#dataset) exists in the /tmp directory where the agent is launched.
 
 Note that docker containers should be easy to deploy in cloud environments, with agents installed 
 on each production environment and the GoCD server running on an independent "Pipelines" environment. 
