@@ -123,12 +123,13 @@ The example CI/CD pipeline includes:
 Pipeline yaml definition files for [GoCD](https://docs.gocd.org) 
 are provided in the `pipeline/` folder.  
 Follow these steps to start with the pipelines provided:
-1. Launch a GoCD server docker container, e.g. `docker run -d -p8153:8153 gocd/gocd-server:v22.1.0`
-1. Launch a GoCD agent; read instructions on [GoCD's dockerhub](https://hub.docker.com/r/gocd/gocd-agent-ubuntu-20.04)
+1. Launch a GoCD server docker container, e.g. `docker run -d -p8153:8153 --name "gocd" gocd/gocd-server:v22.1.0`
+1. Launch a GoCD agent docker container, e.g. `docker run -d -e GO_SERVER_URL=http://$(docker inspect --format='{{(index (index .NetworkSettings.IPAddress))}}' gocd):8153/go gocd/gocd-agent-ubuntu-20.04:v22.1.0` 
+(more info/instructions on [gocd-agent dockerhub](https://hub.docker.com/r/gocd/gocd-agent-ubuntu-20.04))
 1. Launch interface in web browser, at `http://localhost:8153`
 1. In Admin -> Config Repositories add this repository (branch 'main') with `pipeline/*.yaml` in "GoCD YAML files pattern" 
 1. In Rules set Allow -> Pipeline Group -> prod-demo
 1. In 'Agents' tab select a running agent and hit 'Enable'
 
-Note that docker containers would be easy to deploy in a cloud environment, with agents installed 
-on production environments and the server running on a separate "Pipelines" environment. 
+Note that docker containers should be easy to deploy in a cloud environment, with agents installed 
+on each production environment and the GoCD server running on an independent "Pipelines" environment. 

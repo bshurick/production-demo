@@ -1,4 +1,5 @@
 import pytest
+import sys
 import pandas as pd
 import numpy as np
 
@@ -148,6 +149,7 @@ def test_main(monkeypatch):
     # GIVEN
     mock_subproc = MagicMock()
     monkeypatch.setattr(service, "Popen", mock_subproc)
+    monkeypatch.setattr(sys, "argv", ["entrypoint", "serve"])
 
     # WHEN
     try:

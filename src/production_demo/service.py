@@ -8,9 +8,10 @@ to create an inference handler class.
 https://github.com/aws/sagemaker-inference-toolkit
 """
 
-import os
-import pandas as pd
 import logging
+import os
+import sys
+import pandas as pd
 
 from io import StringIO
 from flask import Flask, request, Response
@@ -145,15 +146,16 @@ def start_server():
 
 def main():
     """Entrypoint for launching Flask service"""
-    proc = Popen(
-        [
-            "gunicorn",
-            "-w",
-            "4",
-            "-b",
-            "0.0.0.0:8000",
-            "production_demo.service:start_server()",
-        ]
-    ).wait()
-    # register quit as exception
-    raise Exception(proc)
+    if sys.argv[1] == "serve":
+        proc = Popen(
+            [
+                "gunicorn",
+                "-w",
+                "4",
+                "-b",
+                "0.0.0.0:8000",
+                "production_demo.service:start_server()",
+            ]
+        ).wait()
+        # register quit as exception
+        raise Exception(proc)
