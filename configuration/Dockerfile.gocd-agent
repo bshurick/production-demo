@@ -11,4 +11,8 @@ RUN apt-get update && \
     make \
     && rm -rf /var/lib/apt/lists/*
 
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
+RUN python get-pip.py
+
 USER go
