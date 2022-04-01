@@ -54,7 +54,7 @@ evaluate:
 
 # Run a docker image from tarfile 
 deploy:
-	docker import prod-demo-build.tar.gz \
+	docker import prod-demo-build.tar.gz prod-demo \
 	&& docker run -d -p 8000:8000 --name prod-demo prod-demo
 
 # Run integration tests on running service
