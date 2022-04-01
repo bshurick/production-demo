@@ -64,7 +64,7 @@ works already, then it's already installed.
 ### Dataset 
 Copy the
 [House Prices dataset from Kaggle](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data)
-and unzip into the /tmp folder for use with model training and evaluation. 
+and unzip into a data/ folder in the package root directory for use with model training and evaluation. 
 
 ### Build testing 
 Install tox with `pip install tox`; 
