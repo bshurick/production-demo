@@ -1,0 +1,7 @@
+FROM gocd/gocd-agent-ubuntu-20.04:v22.1.0
+
+USER root
+
+RUN apt-get update && apt-get install -y make
+
+USER go

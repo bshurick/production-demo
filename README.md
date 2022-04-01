@@ -124,12 +124,17 @@ Pipeline yaml definition files for [GoCD](https://docs.gocd.org)
 are provided in the `pipeline/` folder.  
 Follow these steps to start with the pipelines provided:
 1. Launch a GoCD server docker container, e.g. `docker run -d -p8153:8153 --name "gocd" gocd/gocd-server:v22.1.0`
-1. Launch a GoCD agent docker container, e.g. `docker run -d -e GO_SERVER_URL=http://$(docker inspect --format='{{(index (index .NetworkSettings.IPAddress))}}' gocd):8153/go gocd/gocd-agent-ubuntu-20.04:v22.1.0` 
-(more info/instructions on [gocd-agent dockerhub](https://hub.docker.com/r/gocd/gocd-agent-ubuntu-20.04))
-1. Launch interface in web browser, at `http://localhost:8153`
-1. In Admin -> Config Repositories add this repository (url "https://github.com/bshurick/production-demo.git", branch 'main') with `pipeline/*.yaml` in "GoCD YAML files pattern" 
-1. In Rules set Allow -> Pipeline Group -> prod-demo
-1. In 'Agents' tab select a running agent and hit 'Enable'
+2. Launch a GoCD agent docker container using the provided Dockerfile
+`configuration/Dockerfile.gocd-agent`, e.g.: 
+```
+docker build -t gocd-agent --file configuration/Dockerfile.gocd-agent .
+docker run -d -e GO_SERVER_URL=http://$(docker inspect --format='{{(index (index .NetworkSettings.IPAddress))}}' gocd):8153/go gocd-agent
+```
+
+3. Launch interface in web browser, at `http://localhost:8153`
+4. In Admin -> Config Repositories add this repository (url "https://github.com/bshurick/production-demo.git", branch 'main') with `pipeline/*.yaml` in "GoCD YAML files pattern" 
+5. In Rules set Allow -> Pipeline Group -> prod-demo
+6. In 'Agents' tab select a running agent and hit 'Enable'
 
 Note that docker containers should be easy to deploy in cloud environments, with agents installed 
 on each production environment and the GoCD server running on an independent "Pipelines" environment. 
