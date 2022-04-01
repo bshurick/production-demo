@@ -122,9 +122,9 @@ The example CD pipeline includes:
 1. Deployment of hosted model service 
 1. Integration tests of model service
 
-In many cases it is not a good idea to include automated training as part of the continuous deployment pipeline, 
-because small changes to any code would trigger a full retrain. However, 
-training is non-intensive in this simple example, so training is included in the pipeline by default. 
+> :warning: In many cases it is not a good idea to include automated training as part of the continuous deployment pipeline, 
+> because small changes to any code would trigger a full retrain. However, 
+> training is non-intensive in this simple example, so training is included in the pipeline by default. 
 
 **build-train-deploy pipeline:**
 <img src="https://raw.githubusercontent.com/bshurick/production-demo/main/doc/images/pipeline.png" />
@@ -140,6 +140,7 @@ Follow these steps to start with the pipelines provided:
 ```
 docker build -t gocd-agent --file configuration/Dockerfile.gocd-agent .
 docker run -d \
+  -v /var/run/docker.sock:/var/run/docker.sock \
   -e GO_SERVER_URL=http://$(docker inspect --format='{{(index (index .NetworkSettings.IPAddress))}}' gocd):8153/go \
   --mount type=bind,source=/tmp,target=/tmp \
   gocd-agent
