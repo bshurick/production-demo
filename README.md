@@ -131,5 +131,5 @@ Follow these steps to start with the pipelines provided:
 1. In Rules set Allow -> Pipeline Group -> prod-demo
 1. In 'Agents' tab select a running agent and hit 'Enable'
 
-Note that docker containers should be easy to deploy in a cloud environment, with agents installed 
+Note that docker containers should be easy to deploy in cloud environments, with agents installed 
 on each production environment and the GoCD server running on an independent "Pipelines" environment. 

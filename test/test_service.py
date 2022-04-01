@@ -164,3 +164,23 @@ def test_main(monkeypatch):
         ),
         call().wait(),
     ]
+
+
+def test_main_noargs(monkeypatch):
+    """Mock our entrypoint
+
+    Test entrypoint with missing serve arg
+    """
+    # GIVEN
+    mock_subproc = MagicMock()
+    monkeypatch.setattr(service, "Popen", mock_subproc)
+    monkeypatch.setattr(sys, "argv", ["entrypoint"])
+
+    # WHEN
+    try:
+        main()
+    except Exception:
+        pass
+
+    # THEN
+    assert mock_subproc.mock_calls == []
