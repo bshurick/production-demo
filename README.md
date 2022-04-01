@@ -138,3 +138,5 @@ docker run -d -e GO_SERVER_URL=http://$(docker inspect --format='{{(index (index
 
 Note that docker containers should be easy to deploy in cloud environments, with agents installed 
 on each production environment and the GoCD server running on an independent "Pipelines" environment. 
+
+It may be necessary to edit the GoCD Agent dockerfile if extra prereqs are added for your environment. 
