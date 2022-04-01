@@ -128,7 +128,10 @@ Follow these steps to start with the pipelines provided:
 `configuration/Dockerfile.gocd-agent`, e.g.: 
 ```
 docker build -t gocd-agent --file configuration/Dockerfile.gocd-agent .
-docker run -d -e GO_SERVER_URL=http://$(docker inspect --format='{{(index (index .NetworkSettings.IPAddress))}}' gocd):8153/go gocd-agent
+docker run -d \
+  -e GO_SERVER_URL=http://$(docker inspect --format='{{(index (index .NetworkSettings.IPAddress))}}' gocd):8153/go \
+  --mount type=bind,source=/tmp,target=/tmp \
+  gocd-agent
 ```
 
 3. Launch interface in web browser, at `http://localhost:8153`

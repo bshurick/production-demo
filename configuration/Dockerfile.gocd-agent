@@ -1,8 +1,12 @@
 FROM gocd/gocd-agent-ubuntu-20.04:v22.1.0
+
+# Avoid interactive prompts
 ARG DEBIAN_FRONTEND=noninteractive
 
+# Set user as root for installation of prereqs
 USER root
 
+# Install prereqs 
 RUN apt-get update && \
     apt-get -y install --no-install-recommends \
     libgomp1 \
@@ -11,9 +15,13 @@ RUN apt-get update && \
     make \
     && rm -rf /var/lib/apt/lists/*
 
+# Install pip 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
 RUN python get-pip.py
+
+# Update local path 
 ENV PATH="/home/go/.local/bin:$PATH"
 
+# Set user as non-root
 USER go
