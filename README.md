@@ -127,7 +127,7 @@ Follow these steps to start with the pipelines provided:
 1. Launch a GoCD agent docker container, e.g. `docker run -d -e GO_SERVER_URL=http://$(docker inspect --format='{{(index (index .NetworkSettings.IPAddress))}}' gocd):8153/go gocd/gocd-agent-ubuntu-20.04:v22.1.0` 
 (more info/instructions on [gocd-agent dockerhub](https://hub.docker.com/r/gocd/gocd-agent-ubuntu-20.04))
 1. Launch interface in web browser, at `http://localhost:8153`
-1. In Admin -> Config Repositories add this repository (branch 'main') with `pipeline/*.yaml` in "GoCD YAML files pattern" 
+1. In Admin -> Config Repositories add this repository (url "https://github.com/bshurick/production-demo.git", branch 'main') with `pipeline/*.yaml` in "GoCD YAML files pattern" 
 1. In Rules set Allow -> Pipeline Group -> prod-demo
 1. In 'Agents' tab select a running agent and hit 'Enable'
 
