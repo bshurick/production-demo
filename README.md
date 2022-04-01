@@ -17,7 +17,7 @@ unit and integration tests, and continuous integration and deployment pipelines.
   * [Integration test](#local-integration-test)
 * [What is the best way to compare model results using this template?](#what-is-the-best-way-to-compare-model-results-using-this-template)  
 * [What steps can be automated with continuous integration and deployment pipelines?](#what-steps-can-be-automated-with-continuous-integration-and-deployment-pipelines)
-* [How can I set up a continuous integration pipeline?](#how-can-i-set-up-a-continuous-integration-pipeline)
+* [How can I set up a continuous integration pipeline?](#how-can-i-set-up-a-continuous-deployment-pipeline)
 
 ## What is this package? 
 This package is a simple demonstration of a production machine learning package, 
@@ -66,6 +66,9 @@ Copy the
 [House Prices dataset from Kaggle](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data)
 and unzip into a data/ folder in the package root directory for use with model training and evaluation. 
 
+When running automated training via the provided [continous deployment pipeline](#how-can-i-set-up-a-continuous-deployment-pipeline), 
+the agent expects to have the original zip file in the /tmp directory of the running agent. 
+
 ### Build testing 
 Install tox with `pip install tox`; 
 run build and unit tests using the `tox` command.  
@@ -102,22 +105,31 @@ Model results should be added to pull requests to quickly view how each change i
 
 ## What steps can be automated with continuous integration and deployment pipelines?
 
-The [GoCD](https://docs.gocd.org) CI/CD pipeline automates all steps in the 
+The files in `.github/workflows` provide continuous integration capabilities by blocking 
+merge requests if test actions fail. 
+This utilizes [GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration), 
+which has many additional workflow options available.
+
+The [GoCD](https://docs.gocd.org) continuous deployment pipeline automates all steps in the 
 [How do I install...](#how-do-i-install-and-run-this-package) section above, where 
 each step must succeed before the next step will execute, and any git push will 
 automatically start the pipeline at step 1. 
 
-The example CI/CD pipeline includes:
-1. Code build and unit tests
+The example CD pipeline includes:
+1. Code build and unit tests before deployment
 1. Automated training and evaluation 
 1. Bundling of trained model artifacts 
 1. Deployment of hosted model service 
 1. Integration tests of model service
 
-**CI / CD build and test pipeline:**
+In many cases it is not a good idea to include automated training as part of the continuous deployment pipeline, 
+because it may not be a good idea to retrain every time small changes are deployed to the service code. However, 
+training is non-intensive in this simple example, so training is included by default.
+
+**build-train-deploy pipeline:**
 <img src="https://raw.githubusercontent.com/bshurick/production-demo/main/doc/images/pipeline.png" />
 
-## How can I set up a continuous integration pipeline? 
+## How can I set up a continuous deployment pipeline? 
 
 Pipeline yaml definition files for [GoCD](https://docs.gocd.org) 
 are provided in the `pipeline/` folder.  
