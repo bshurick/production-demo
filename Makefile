@@ -39,14 +39,14 @@ format:
 # Install package in a virtual environment and train 
 train:
 	python3 -m venv . \
-	&& source bin/activate \
+	&& ./bin/activate \
 	&& pip3 install . \
 	&& bin/HouseTrain
 
 # Install package in a virtual environment and update eval results file 
 evaluate:
 	python3 -m venv . \
-	&& source bin/activate \
+	&& ./bin/activate \
 	&& pip3 install . \
 	&& bin/HouseEval > eval/results.csv \
 	&& cat eval/results.csv
