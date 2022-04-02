@@ -135,7 +135,6 @@ docker run -d \
   --mount type=bind,source=/tmp,target=/tmp \
   gocd-agent
 ```
-
 3. Launch interface in web browser, at `http://localhost:8153`
 4. In Admin -> Config Repositories add this repository (url "https://github.com/bshurick/production-demo.git", branch 'main') with `pipeline/*.yaml` in "GoCD YAML files pattern" 
 5. In Rules set Allow -> Pipeline Group -> prod-demo
