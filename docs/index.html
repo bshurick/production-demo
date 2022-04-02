@@ -34,36 +34,14 @@
             
   <section id="production-data-science">
 <h1>Production Data Science<a class="headerlink" href="#production-data-science" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://bshurick.github.io/production-demo"><img alt="Documentation" src="https://img.shields.io/badge/docs-latest-brightgreen.svg" /></a>
+<a class="reference external image-reference" href="https://github.com/bshurick/production-demo/actions/workflows/makefile.yml"><img alt="Makefile CI" src="https://github.com/bshurick/production-demo/actions/workflows/makefile.yml/badge.svg" /></a>
+<hr class="docutils" />
 <p>A demonstration for Data Scientists of how to create and test a production
 machine learning model, from notebook to completed python package, hosted inference service,
 unit and integration tests, and continuous integration and deployment pipelines.</p>
-<section id="table-of-contents">
-<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="#what-is-this-package">What is this package?</a></p>
-<ul>
-<li><p><a class="reference external" href="#demo-highlights">Demo Highlights</a></p></li>
-<li><p><a class="reference external" href="#package-components">Package Components</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="#how-do-i-install-and-run-this-package">How do I install and run this package?</a></p>
-<ul>
-<li><p><a class="reference external" href="#local-installation">Installation</a></p></li>
-<li><p><a class="reference external" href="#dataset">Dataset</a></p></li>
-<li><p><a class="reference external" href="#build-testing">Build testing</a></p></li>
-<li><p><a class="reference external" href="#training">Training</a></p></li>
-<li><p><a class="reference external" href="#evaluation">Evaluation</a></p></li>
-<li><p><a class="reference external" href="#launch-inference-service">Launch inference service</a></p></li>
-<li><p><a class="reference external" href="#local-integration-test">Integration test</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="#what-is-the-best-way-to-compare-model-results-using-this-template">What is the best way to compare model results using this template?</a></p></li>
-<li><p><a class="reference external" href="#what-steps-can-be-automated-with-continuous-integration-and-deployment-pipelines">What steps can be automated with continuous integration and deployment pipelines?</a></p></li>
-<li><p><a class="reference external" href="#how-can-i-set-up-a-continuous-deployment-pipeline">How can I set up a continuous integration pipeline?</a></p></li>
-</ul>
-</section>
-<section id="id1">
-<h2>What is this package?<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<section id="what-is-this-package">
+<h2>What is this package?<a class="headerlink" href="#what-is-this-package" title="Permalink to this headline">¶</a></h2>
 <p>This package is a simple demonstration of a production machine learning package,
 from notebook to training functions with unit tests and implemented invoke service.
 This invoke service is meant to be adapted into a
@@ -71,8 +49,8 @@ This invoke service is meant to be adapted into a
 <p>The code is basic and meant to be used as a starting point for larger projects. Unit
 tests cover both logic and scripting with mocked resources, which should be helpful for Data Scientists
 looking to improve their unit testing skills.</p>
-<section id="id2">
-<h3>Demo Highlights<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<section id="demo-highlights">
+<h3>Demo Highlights<a class="headerlink" href="#demo-highlights" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Notebooks folder for parameter tuning and data analysis</p></li>
 <li><p>Buildable python package with train, evaluate, and inference modules</p></li>
@@ -82,8 +60,8 @@ via <a class="reference external" href="https://www.sphinx-doc.org/en/master/">S
 <li><p>Pipeline as code via <a class="reference external" href="https://www.gocd.org/">GoCD</a></p></li>
 </ol>
 </section>
-<section id="id3">
-<h3>Package Components<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<section id="package-components">
+<h3>Package Components<a class="headerlink" href="#package-components" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>: Build instructions</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>: Package metadata and PyPi dependencies</p></li>
@@ -97,8 +75,8 @@ via <a class="reference external" href="https://www.sphinx-doc.org/en/master/">S
 </ul>
 </section>
 </section>
-<section id="id4">
-<h2>How do I install and run this package?<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<section id="how-do-i-install-and-run-this-package">
+<h2>How do I install and run this package?<a class="headerlink" href="#how-do-i-install-and-run-this-package" title="Permalink to this headline">¶</a></h2>
 <p>You may first need to install <a class="reference external" href="https://www.gnu.org/software/make/">Make</a> on your machine,
 e.g. via <a class="reference external" href="https://formulae.brew.sh/formula/make">brew</a> on MacOS. If the <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-version</span></code> command
 works already, then it’s already installed.</p>
@@ -112,47 +90,47 @@ works already, then it’s already installed.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">make</span></code></p></li>
 </ol>
 </section>
-<section id="id5">
-<h3>Dataset<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<section id="dataset">
+<h3>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h3>
 <p>Copy the
 <a class="reference external" href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data">House Prices dataset from Kaggle</a>
 and unzip into a data/ folder in the package root directory for use with model training and evaluation.</p>
-<p>When running automated training via the provided <a class="reference external" href="#how-can-i-set-up-a-continuous-deployment-pipeline">continous deployment pipeline</a>,
+<p>When running automated training via the provided <span class="xref std std-ref">continous deployment pipeline</span>,
 the agent expects to have the original zip file in the /tmp directory of the running agent.</p>
 </section>
-<section id="id6">
-<h3>Build testing<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<section id="build-testing">
+<h3>Build testing<a class="headerlink" href="#build-testing" title="Permalink to this headline">¶</a></h3>
 <p>Install tox with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tox</span></code>;
 run build and unit tests using the <code class="docutils literal notranslate"><span class="pre">tox</span></code> command.<span class="raw-html-m2r"><br></span>
 After running,
 view the test coverage report in <code class="docutils literal notranslate"><span class="pre">build/coverage/index.html</span></code>.</p>
 </section>
-<section id="id7">
-<h3>Training<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p>To run train after building, <a class="reference external" href="#dataset">copy the dataset</a> locally, then run <code class="docutils literal notranslate"><span class="pre">bin/HouseTrain</span></code>.</p>
+<section id="training">
+<h3>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h3>
+<p>To run train after building, <span class="xref std std-ref">copy the dataset</span> locally, then run <code class="docutils literal notranslate"><span class="pre">bin/HouseTrain</span></code>.</p>
 </section>
-<section id="id8">
-<h3>Evaluation<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<section id="evaluation">
+<h3>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h3>
 <p>Run <code class="docutils literal notranslate"><span class="pre">bin/HouseEval</span></code> after copying the dataset locally to run cross validation and emit results as logs.<span class="raw-html-m2r"><br></span>
 Alternatively, run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">evaluate</span></code> to save results as a CSV in the <code class="docutils literal notranslate"><span class="pre">eval/</span></code> folder.</p>
 </section>
-<section id="id9">
-<h3>Launch inference service<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<section id="launch-inference-service">
+<h3>Launch inference service<a class="headerlink" href="#launch-inference-service" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Install <a class="reference external" href="https://docs.docker.com/get-docker/">Docker</a></p></li>
-<li><p>Install this package via <a class="reference external" href="#installation">instructions</a></p></li>
-<li><p>Run <a class="reference external" href="#training">training</a></p></li>
+<li><p>Install this package via <span class="xref std std-ref">instructions</span></p></li>
+<li><p>Run <span class="xref std std-ref">training</span></p></li>
 <li><p>Run the deploy make script (<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">deploy</span></code>) to build a docker container and run locally</p></li>
 </ol>
 </section>
 <section id="local-integration-test">
 <h3>Local integration test<a class="headerlink" href="#local-integration-test" title="Permalink to this headline">¶</a></h3>
-<p>After <a class="reference external" href="#launch-inference-service">launching</a> the inference service docker container locally,
+<p>After <span class="xref std std-ref">launching</span> the inference service docker container locally,
 run <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">test_integ</span></code> to run integration tests on the running service.</p>
 </section>
 </section>
-<section id="id11">
-<h2>What is the best way to compare model results using this template?<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<section id="what-is-the-best-way-to-compare-model-results-using-this-template">
+<h2>What is the best way to compare model results using this template?<a class="headerlink" href="#what-is-the-best-way-to-compare-model-results-using-this-template" title="Permalink to this headline">¶</a></h2>
 <p>If you create an eval script like in the example <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">evaluate</span></code>, results
 are output to stdout then redirected into a <code class="docutils literal notranslate"><span class="pre">results.csv</span></code> file. The results are then committed
 to the git repository.</p>
@@ -160,14 +138,14 @@ to the git repository.</p>
 in the results file across different tags, e.g. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">tag1..tag2</span> <span class="pre">--</span> <span class="pre">eval/results.csv</span></code>.</p>
 <p>Model results should be added to pull requests to quickly view how each change impacts the results.</p>
 </section>
-<section id="id12">
-<h2>What steps can be automated with continuous integration and deployment pipelines?<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<section id="what-steps-can-be-automated-with-continuous-integration-and-deployment-pipelines">
+<h2>What steps can be automated with continuous integration and deployment pipelines?<a class="headerlink" href="#what-steps-can-be-automated-with-continuous-integration-and-deployment-pipelines" title="Permalink to this headline">¶</a></h2>
 <p>The files in <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code> provide continuous integration capabilities by blocking
 merge requests if test actions fail.
 This utilizes <a class="reference external" href="https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration">GitHub Actions</a>,
 which has many additional workflow options available.</p>
 <p>The <a class="reference external" href="https://docs.gocd.org">GoCD</a> continuous deployment pipeline automates all steps in the
-<a class="reference external" href="#how-do-i-install-and-run-this-package">How do I install…</a> section above, where
+<span class="xref std std-ref">How do I install…</span> section above, where
 each step must succeed before the next step will execute, and any git push will
 automatically start the pipeline at step 1.</p>
 <p>The example CD pipeline includes:</p>
@@ -215,7 +193,7 @@ gocd-agent
 <li><p>In Rules set Allow -&gt; Pipeline Group -&gt; prod-demo</p></li>
 <li><p>In ‘Agents’ tab select a running agent and hit ‘Enable’</p></li>
 </ol>
-<p>The <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command shown above assumes the <a class="reference external" href="#dataset">source data</a> exists in the /tmp directory where the agent is launched.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command shown above assumes the <span class="xref std std-ref">source data</span> exists in the /tmp directory where the agent is launched.</p>
 <p>Note that docker containers should be easy to deploy in cloud environments, with agents installed
 on each production environment and the GoCD server running on an independent “Pipelines” environment.</p>
 <p>It may be necessary to edit the GoCD Agent dockerfile if extra prereqs are added for your environment.</p>
@@ -224,7 +202,59 @@ on each production environment and the GoCD server running on an independent “
 <section id="modules">
 <h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
-<ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Production Data Science</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-this-package">What is this package?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#demo-highlights">Demo Highlights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package-components">Package Components</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-install-and-run-this-package">How do I install and run this package?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#local-installation">Local Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataset">Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-testing">Build testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#training">Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluation">Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launch-inference-service">Launch inference service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#local-integration-test">Local integration test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-the-best-way-to-compare-model-results-using-this-template">What is the best way to compare model results using this template?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-steps-can-be-automated-with-continuous-integration-and-deployment-pipelines">What steps can be automated with continuous integration and deployment pipelines?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-can-i-set-up-a-continuous-deployment-pipeline">How can I set up a continuous deployment pipeline?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#modules">Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="train.html">Training Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/production_demo.train.html">production_demo.train</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/production_demo.train.handler.html">production_demo.train.handler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/production_demo.train.CategoriesTransformer.html">production_demo.train.CategoriesTransformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/production_demo.train.CategoriesTransformer.hash_col.html">production_demo.train.CategoriesTransformer.hash_col</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/production_demo.train.CategoriesTransformer.transform.html">production_demo.train.CategoriesTransformer.transform</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate.html">Evaluation Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/production_demo.evaluate.html">production_demo.evaluate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/production_demo.evaluate.handler.html">production_demo.evaluate.handler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">Service Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/production_demo.service.html">production_demo.service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/production_demo.service.InferenceHandler.html">production_demo.service.InferenceHandler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/production_demo.service.start_server.html">production_demo.service.start_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/production_demo.service.main.html">production_demo.service.main</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="test.html">Unit and integration tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/test_eval.test_eval_handler.html">test_eval.test_eval_handler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/test_train.test_train_handler.html">test_train.test_train_handler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/test_hasher.test_hasher.html">test_hasher.test_hasher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/test_local_endpoint.test_endpoint.html">test_local_endpoint.test_endpoint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="train.html">Training Module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="modules/production_demo.train.html">production_demo.train</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/production_demo.train.handler.html">production_demo.train.handler</a></li>
@@ -258,8 +288,6 @@ on each production environment and the GoCD server running on an independent “
 <section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </section>
@@ -275,13 +303,51 @@ on each production environment and the GoCD server running on an independent “
 
 
 
+<p class="blurb">Production Data Science demo</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=bshurick&repo=production-demo&type=mark&count=False&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
 
 
 
 
 
 <h3>Navigation</h3>
-<ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Production Data Science</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-this-package">What is this package?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#demo-highlights">Demo Highlights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package-components">Package Components</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-install-and-run-this-package">How do I install and run this package?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#local-installation">Local Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataset">Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-testing">Build testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#training">Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluation">Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launch-inference-service">Launch inference service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#local-integration-test">Local integration test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-the-best-way-to-compare-model-results-using-this-template">What is the best way to compare model results using this template?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-steps-can-be-automated-with-continuous-integration-and-deployment-pipelines">What steps can be automated with continuous integration and deployment pipelines?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-can-i-set-up-a-continuous-deployment-pipeline">How can I set up a continuous deployment pipeline?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#modules">Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="train.html">Training Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate.html">Evaluation Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">Service Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test.html">Unit and integration tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="train.html">Training Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluate.html">Evaluation Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="service.html">Service Module</a></li>
@@ -330,6 +396,10 @@ on each production environment and the GoCD server running on an independent “
           rel="nofollow">Page source</a>
     </div>
 
+    
+    <a href="https://github.com/bshurick/production-demo" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
     
 
     
