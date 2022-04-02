@@ -8,11 +8,10 @@ test:
 
 # Build docker environment and save as tarfile 
 build:
-	docker build -t prod-demo --no-cache \
-	--file configuration/Dockerfile \
-	--output configuration/prod-demo-build . \
-	&& tar -cvzf configuration/prod-demo-build.tar.gz configuration/prod-demo-build 2>/dev/null \
-	&& rm -rf configuration/prod-demo-build
+	cat configuration/Dockerfile \
+	| docker build -t prod-demo --no-cache \
+	--output type=tar,dest=prod-demo-build.tar --file - . \
+	&& gzip prod-demo-build.tar
 
 # Generate documentation and upload to git documentation page
 update-docs: test
@@ -54,7 +53,7 @@ evaluate:
 
 # Run a docker image from tarfile 
 deploy:
-	docker import prod-demo-build.tar.gz prod-demo \
+	docker load -i prod-demo-build.tar.gz \
 	&& docker run -d -p 8000:8000 --name prod-demo prod-demo
 
 # Run integration tests on running service

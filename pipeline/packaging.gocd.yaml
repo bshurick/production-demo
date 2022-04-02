@@ -32,7 +32,7 @@ pipelines:
             timeout: 0
             artifacts:
             - build:
-                source: configuration/prod-demo-build.tar.gz
+                source: prod-demo-build.tar.gz
                 destination: ''
             - build:
                 source: Makefile
