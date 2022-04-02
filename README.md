@@ -113,8 +113,8 @@ The example CD pipeline includes:
 1. Integration tests of model service
 
 > :warning: In many cases it is not a good idea to include automated training as part of the continuous deployment pipeline, 
-> because small changes to any code would trigger a full retrain. However, 
-> training is non-intensive in this simple example, so training is included in the pipeline by default. 
+  because small changes to any code would trigger a full retrain. However, 
+  training is non-intensive in this simple example, so training is included in the pipeline by default. 
 
 **build-train-deploy pipeline:**  
 <img src="https://raw.githubusercontent.com/bshurick/production-demo/main/doc/images/pipeline.png" />
