@@ -5,7 +5,7 @@
 
 .. mdinclude:: ../README.md
 
-Modules
+Contents
 =========
 
 .. toctree::
@@ -16,7 +16,7 @@ Modules
    test
 
 
-Indices and tables
+Search
 ==================
 
 * :ref:`search`

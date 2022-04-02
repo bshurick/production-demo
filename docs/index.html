@@ -173,10 +173,9 @@ training is non-intensive in this simple example, so training is included in the
 <p>Pipeline yaml definition files for <a class="reference external" href="https://docs.gocd.org">GoCD</a>
 are provided in the <code class="docutils literal notranslate"><span class="pre">pipeline/</span></code> folder.<span class="raw-html-m2r"><br></span>
 Follow these steps to start with the pipelines provided:</p>
-<p>#. Launch a GoCD server docker container, e.g. <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-d</span> <span class="pre">-p8153:8153</span> <span class="pre">--name</span> <span class="pre">&quot;gocd&quot;</span> <span class="pre">gocd/gocd-server:v22.1.0</span></code>
-#.</p>
-<blockquote>
-<div><p>Launch a GoCD agent docker container using the provided Dockerfile
+<ol class="arabic">
+<li><p>Launch a GoCD server docker container, e.g. <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-d</span> <span class="pre">-p8153:8153</span> <span class="pre">--name</span> <span class="pre">&quot;gocd&quot;</span> <span class="pre">gocd/gocd-server:v22.1.0</span></code></p></li>
+<li><p>Launch a GoCD agent docker container using the provided Dockerfile
 <code class="docutils literal notranslate"><span class="pre">configuration/Dockerfile.gocd-agent</span></code>, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker build -t gocd-agent --file configuration/Dockerfile.gocd-agent .
 docker run -d \
@@ -186,8 +185,7 @@ docker run -d \
 gocd-agent
 </pre></div>
 </div>
-</div></blockquote>
-<ol class="arabic simple">
+</li>
 <li><p>Launch interface in web browser, at <code class="docutils literal notranslate"><span class="pre">http://localhost:8153</span></code></p></li>
 <li><p>In Admin -&gt; Config Repositories add this repository (url “<a class="reference external" href="https://github.com/bshurick/production-demo.git">https://github.com/bshurick/production-demo.git</a>”, branch ‘main’) with <code class="docutils literal notranslate"><span class="pre">pipeline/*.yaml</span></code> in “GoCD YAML files pattern”</p></li>
 <li><p>In Rules set Allow -&gt; Pipeline Group -&gt; prod-demo</p></li>
@@ -199,8 +197,8 @@ on each production environment and the GoCD server running on an independent “
 <p>It may be necessary to edit the GoCD Agent dockerfile if extra prereqs are added for your environment.</p>
 </section>
 </section>
-<section id="modules">
-<h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
+<section id="contents">
+<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Production Data Science</a><ul>
@@ -224,7 +222,7 @@ on each production environment and the GoCD server running on an independent “
 <li class="toctree-l2"><a class="reference internal" href="#how-can-i-set-up-a-continuous-deployment-pipeline">How can I set up a continuous deployment pipeline?</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#modules">Modules</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="#contents">Contents</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="train.html">Training Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modules/production_demo.train.html">production_demo.train</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/production_demo.train.handler.html">production_demo.train.handler</a></li>
@@ -254,7 +252,7 @@ on each production environment and the GoCD server running on an independent “
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#search">Search</a></li>
 <li class="toctree-l1"><a class="reference internal" href="train.html">Training Module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="modules/production_demo.train.html">production_demo.train</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/production_demo.train.handler.html">production_demo.train.handler</a></li>
@@ -285,8 +283,8 @@ on each production environment and the GoCD server running on an independent “
 </ul>
 </div>
 </section>
-<section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<section id="search">
+<h1>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
@@ -340,14 +338,14 @@ on each production environment and the GoCD server running on an independent “
 <li class="toctree-l2"><a class="reference internal" href="#how-can-i-set-up-a-continuous-deployment-pipeline">How can I set up a continuous deployment pipeline?</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#modules">Modules</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="#contents">Contents</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="train.html">Training Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="evaluate.html">Evaluation Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="service.html">Service Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="test.html">Unit and integration tests</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#search">Search</a></li>
 <li class="toctree-l1"><a class="reference internal" href="train.html">Training Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluate.html">Evaluation Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="service.html">Service Module</a></li>
