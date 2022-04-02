@@ -56,10 +56,25 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 #
 source_suffix = ['.rst', '.md']
 master_doc = "index"
+m2r_parse_relative_links = True
 
+# autodoc
 autoclass_content = "class"
 autodoc_member_order = "bysource"
 default_role = "py:obj"
 
+# Theme 
 html_theme = "alabaster"
 html_static_path = []
+html_theme_options = {
+    'description': 'Production Data Science demo',
+    'github_user': 'bshurick',
+    'github_repo': 'production-demo',
+    'github_banner': True,
+    'github_type': 'mark',
+    'github_count': False,
+    'font_family': '"Charis SIL", "Noto Serif", serif',
+    'head_font_family': 'Lato, sans-serif',
+    'code_font_family': '"Code new roman", "Ubuntu Mono", monospace',
+    'code_font_size': '1rem',
+}

@@ -9,22 +9,6 @@ A demonstration for Data Scientists of how to create and test a production
 machine learning model, from notebook to completed python package, hosted inference service, 
 unit and integration tests, and continuous integration and deployment pipelines. 
 
-## Table of Contents
-* [What is this package?](#what-is-this-package)
-  * [Demo Highlights](#demo-highlights)
-  * [Package Components](#package-components)
-* [How do I install and run this package?](#how-do-i-install-and-run-this-package)
-  * [Installation](#local-installation)
-  * [Dataset](#dataset)
-  * [Build testing](#build-testing)
-  * [Training](#training)
-  * [Evaluation](#evaluation)
-  * [Launch inference service](#launch-inference-service)
-  * [Integration test](#local-integration-test)
-* [What is the best way to compare model results using this template?](#what-is-the-best-way-to-compare-model-results-using-this-template)  
-* [What steps can be automated with continuous integration and deployment pipelines?](#what-steps-can-be-automated-with-continuous-integration-and-deployment-pipelines)
-* [How can I set up a continuous integration pipeline?](#how-can-i-set-up-a-continuous-deployment-pipeline)
-
 ## What is this package? 
 This package is a simple demonstration of a production machine learning package, 
 from notebook to training functions with unit tests and implemented invoke service. 
