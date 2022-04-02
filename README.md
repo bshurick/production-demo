@@ -8,7 +8,7 @@ unit and integration tests, and continuous integration and deployment pipelines.
   * [Demo Highlights](#demo-highlights)
   * [Package Components](#package-components)
 * [How do I install and run this package?](#how-do-i-install-and-run-this-package)
-  * [Installation](#installation)
+  * [Installation](#local-installation)
   * [Dataset](#dataset)
   * [Build testing](#build-testing)
   * [Training](#training)
@@ -133,7 +133,7 @@ The example CD pipeline includes:
 
 Pipeline yaml definition files for [GoCD](https://docs.gocd.org) 
 are provided in the `pipeline/` folder.  
-Follow these steps to start with the pipelines provided:
+Follow these steps to start with the pipelines provided:  
 1. Launch a GoCD server docker container, e.g. `docker run -d -p8153:8153 --name "gocd" gocd/gocd-server:v22.1.0`
 2. Launch a GoCD agent docker container using the provided Dockerfile
 `configuration/Dockerfile.gocd-agent`, e.g.: 

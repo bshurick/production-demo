@@ -3,17 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to ProductionDemo's documentation!
----------
+.. mdinclude:: ../README.md
 
-This package is a simple demonstration of a production machine learning package, 
-from notebook to training functions with unit tests and implemented invoke service. 
-
-The code is basic and meant to be used as a starting point for larger projects. Unit 
-tests cover both logic and scripting with mocks, which should be helpful for Data Scientists 
-looking to improve their unit testing skills. 
-
-Visit the `github page <https://github.com/bshurick/production-demo>`_ for more info.
+Modules
+=========
 
 .. toctree::
 
