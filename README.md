@@ -1,4 +1,10 @@
 # Production Data Science
+
+[![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://bshurick.github.io/production-demo)
+[![Makefile CI](https://github.com/bshurick/production-demo/actions/workflows/makefile.yml/badge.svg)](https://github.com/bshurick/production-demo/actions/workflows/makefile.yml)
+
+------------
+
 A demonstration for Data Scientists of how to create and test a production 
 machine learning model, from notebook to completed python package, hosted inference service, 
 unit and integration tests, and continuous integration and deployment pipelines. 
