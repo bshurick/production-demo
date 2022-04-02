@@ -54,7 +54,7 @@ You may first need to install [Make](https://www.gnu.org/software/make/) on your
 e.g. via [brew](https://formulae.brew.sh/formula/make) on MacOS. If the `make -version` command 
 works already, then it's already installed. 
 
-### Installation
+### Local Installation
 1. `git clone https://github.com/bshurick/production-demo.git`  
 2. `cd production-demo`  
 3. `python3 -m venv .`  

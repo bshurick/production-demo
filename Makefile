@@ -58,5 +58,5 @@ deploy:
 
 # Run integration tests on running service
 integ-test:
-	pip3 install -q -U pytest requests \
-	&& pytest -vv test_integ
+	docker exec prod-demo pip install -q pytest requests \
+	&& docker exec prod-demo pytest ./pkg/test_integ
