@@ -9,8 +9,8 @@ test:
 # Build docker environment and save as tarfile 
 build:
 	cat configuration/Dockerfile \
-	| docker build -t prod-demo --no-cache \
-	--output type=tar,dest=prod-demo-build.tar --file - . \
+	| docker build -t prod-demo --no-cache --file - . \
+	&& docker save -o prod-demo-build.tar prod-demo \
 	&& gzip prod-demo-build.tar
 
 # Generate documentation and upload to git documentation page
