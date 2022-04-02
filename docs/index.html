@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome to ProductionDemo’s documentation! &#8212; ProductionDemo  documentation</title>
+    <title>Production Data Science &#8212; ProductionDemo  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -32,14 +32,197 @@
 
           <div class="body" role="main">
             
-  <section id="welcome-to-productiondemo-s-documentation">
-<h1>Welcome to ProductionDemo’s documentation!<a class="headerlink" href="#welcome-to-productiondemo-s-documentation" title="Permalink to this headline">¶</a></h1>
+  <section id="production-data-science">
+<h1>Production Data Science<a class="headerlink" href="#production-data-science" title="Permalink to this headline">¶</a></h1>
+<p>A demonstration for Data Scientists of how to create and test a production
+machine learning model, from notebook to completed python package, hosted inference service,
+unit and integration tests, and continuous integration and deployment pipelines.</p>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#what-is-this-package">What is this package?</a></p>
+<ul>
+<li><p><a class="reference external" href="#demo-highlights">Demo Highlights</a></p></li>
+<li><p><a class="reference external" href="#package-components">Package Components</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#how-do-i-install-and-run-this-package">How do I install and run this package?</a></p>
+<ul>
+<li><p><a class="reference external" href="#local-installation">Installation</a></p></li>
+<li><p><a class="reference external" href="#dataset">Dataset</a></p></li>
+<li><p><a class="reference external" href="#build-testing">Build testing</a></p></li>
+<li><p><a class="reference external" href="#training">Training</a></p></li>
+<li><p><a class="reference external" href="#evaluation">Evaluation</a></p></li>
+<li><p><a class="reference external" href="#launch-inference-service">Launch inference service</a></p></li>
+<li><p><a class="reference external" href="#local-integration-test">Integration test</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#what-is-the-best-way-to-compare-model-results-using-this-template">What is the best way to compare model results using this template?</a></p></li>
+<li><p><a class="reference external" href="#what-steps-can-be-automated-with-continuous-integration-and-deployment-pipelines">What steps can be automated with continuous integration and deployment pipelines?</a></p></li>
+<li><p><a class="reference external" href="#how-can-i-set-up-a-continuous-deployment-pipeline">How can I set up a continuous integration pipeline?</a></p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>What is this package?<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>This package is a simple demonstration of a production machine learning package,
-from notebook to training functions with unit tests and implemented invoke service.</p>
+from notebook to training functions with unit tests and implemented invoke service.
+This invoke service is meant to be adapted into a
+<a class="reference external" href="https://docs.aws.amazon.com/sagemaker/latest/dg/adapt-inference-container.html">SageMaker custom inference container</a>.</p>
 <p>The code is basic and meant to be used as a starting point for larger projects. Unit
-tests cover both logic and scripting with mocks, which should be helpful for Data Scientists
+tests cover both logic and scripting with mocked resources, which should be helpful for Data Scientists
 looking to improve their unit testing skills.</p>
-<p>Visit the <a class="reference external" href="https://github.com/bshurick/production-demo">github page</a> for more info.</p>
+<section id="id2">
+<h3>Demo Highlights<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Notebooks folder for parameter tuning and data analysis</p></li>
+<li><p>Buildable python package with train, evaluate, and inference modules</p></li>
+<li><p>Unit tests with code coverage reporting, automated with <a class="reference external" href="https://tox.wiki/en/latest/">tox</a></p></li>
+<li><p>Auto-generated <a class="reference external" href="https://bshurick.github.io/production-demo/">package documentation</a>
+via <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a></p></li>
+<li><p>Pipeline as code via <a class="reference external" href="https://www.gocd.org/">GoCD</a></p></li>
+</ol>
+</section>
+<section id="id3">
+<h3>Package Components<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>: Build instructions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>: Package metadata and PyPi dependencies</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>: Ignore some local files, such as data, when committing to git</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">notebooks/</span></code>: Development notebooks for modeling experiments</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/</span></code>: Production code with train and evaluate scripts, and invoke function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">doc/</span></code>: Sphinx documentation example; built during <code class="docutils literal notranslate"><span class="pre">tox</span></code> testing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test/</span></code>: Python unit tests</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_integ/</span></code> Integration tests for a live inference service</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Makefile</span></code>: Contains commands to build and test this package</p></li>
+</ul>
+</section>
+</section>
+<section id="id4">
+<h2>How do I install and run this package?<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>You may first need to install <a class="reference external" href="https://www.gnu.org/software/make/">Make</a> on your machine,
+e.g. via <a class="reference external" href="https://formulae.brew.sh/formula/make">brew</a> on MacOS. If the <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-version</span></code> command
+works already, then it’s already installed.</p>
+<section id="local-installation">
+<h3>Local Installation<a class="headerlink" href="#local-installation" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/bshurick/production-demo.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">production-demo</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">.</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">bin/activate</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span></code></p></li>
+</ol>
+</section>
+<section id="id5">
+<h3>Dataset<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Copy the
+<a class="reference external" href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data">House Prices dataset from Kaggle</a>
+and unzip into a data/ folder in the package root directory for use with model training and evaluation.</p>
+<p>When running automated training via the provided <a class="reference external" href="#how-can-i-set-up-a-continuous-deployment-pipeline">continous deployment pipeline</a>,
+the agent expects to have the original zip file in the /tmp directory of the running agent.</p>
+</section>
+<section id="id6">
+<h3>Build testing<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>Install tox with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tox</span></code>;
+run build and unit tests using the <code class="docutils literal notranslate"><span class="pre">tox</span></code> command.<span class="raw-html-m2r"><br></span>
+After running,
+view the test coverage report in <code class="docutils literal notranslate"><span class="pre">build/coverage/index.html</span></code>.</p>
+</section>
+<section id="id7">
+<h3>Training<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>To run train after building, <a class="reference external" href="#dataset">copy the dataset</a> locally, then run <code class="docutils literal notranslate"><span class="pre">bin/HouseTrain</span></code>.</p>
+</section>
+<section id="id8">
+<h3>Evaluation<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>Run <code class="docutils literal notranslate"><span class="pre">bin/HouseEval</span></code> after copying the dataset locally to run cross validation and emit results as logs.<span class="raw-html-m2r"><br></span>
+Alternatively, run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">evaluate</span></code> to save results as a CSV in the <code class="docutils literal notranslate"><span class="pre">eval/</span></code> folder.</p>
+</section>
+<section id="id9">
+<h3>Launch inference service<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Install <a class="reference external" href="https://docs.docker.com/get-docker/">Docker</a></p></li>
+<li><p>Install this package via <a class="reference external" href="#installation">instructions</a></p></li>
+<li><p>Run <a class="reference external" href="#training">training</a></p></li>
+<li><p>Run the deploy make script (<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">deploy</span></code>) to build a docker container and run locally</p></li>
+</ol>
+</section>
+<section id="local-integration-test">
+<h3>Local integration test<a class="headerlink" href="#local-integration-test" title="Permalink to this headline">¶</a></h3>
+<p>After <a class="reference external" href="#launch-inference-service">launching</a> the inference service docker container locally,
+run <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">test_integ</span></code> to run integration tests on the running service.</p>
+</section>
+</section>
+<section id="id11">
+<h2>What is the best way to compare model results using this template?<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<p>If you create an eval script like in the example <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">evaluate</span></code>, results
+are output to stdout then redirected into a <code class="docutils literal notranslate"><span class="pre">results.csv</span></code> file. The results are then committed
+to the git repository.</p>
+<p>If you use git tagging, you can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> to show differences
+in the results file across different tags, e.g. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">tag1..tag2</span> <span class="pre">--</span> <span class="pre">eval/results.csv</span></code>.</p>
+<p>Model results should be added to pull requests to quickly view how each change impacts the results.</p>
+</section>
+<section id="id12">
+<h2>What steps can be automated with continuous integration and deployment pipelines?<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p>The files in <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code> provide continuous integration capabilities by blocking
+merge requests if test actions fail.
+This utilizes <a class="reference external" href="https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration">GitHub Actions</a>,
+which has many additional workflow options available.</p>
+<p>The <a class="reference external" href="https://docs.gocd.org">GoCD</a> continuous deployment pipeline automates all steps in the
+<a class="reference external" href="#how-do-i-install-and-run-this-package">How do I install…</a> section above, where
+each step must succeed before the next step will execute, and any git push will
+automatically start the pipeline at step 1.</p>
+<p>The example CD pipeline includes:</p>
+<ol class="arabic simple">
+<li><p>Code build and unit tests before deployment</p></li>
+<li><p>Automated training and evaluation</p></li>
+<li><p>Bundling of trained model artifacts</p></li>
+<li><p>Deployment of hosted model service</p></li>
+<li><p>Integration tests of model service</p></li>
+</ol>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">warning</dt>
+<dd class="field-odd"><p>In many cases it is not a good idea to include automated training as part of the continuous deployment pipeline,</p>
+</dd>
+</dl>
+<p>because small changes to any code would trigger a full retrain. However,
+training is non-intensive in this simple example, so training is included in the pipeline by default.</p>
+</div></blockquote>
+<p><strong>build-train-deploy pipeline:</strong><span class="raw-html-m2r"><br></span>
+<span class="raw-html-m2r"><img src="https://raw.githubusercontent.com/bshurick/production-demo/main/doc/images/pipeline.png" /></span></p>
+</section>
+<section id="how-can-i-set-up-a-continuous-deployment-pipeline">
+<h2>How can I set up a continuous deployment pipeline?<a class="headerlink" href="#how-can-i-set-up-a-continuous-deployment-pipeline" title="Permalink to this headline">¶</a></h2>
+<p>Pipeline yaml definition files for <a class="reference external" href="https://docs.gocd.org">GoCD</a>
+are provided in the <code class="docutils literal notranslate"><span class="pre">pipeline/</span></code> folder.<span class="raw-html-m2r"><br></span>
+Follow these steps to start with the pipelines provided:</p>
+<p>#. Launch a GoCD server docker container, e.g. <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-d</span> <span class="pre">-p8153:8153</span> <span class="pre">--name</span> <span class="pre">&quot;gocd&quot;</span> <span class="pre">gocd/gocd-server:v22.1.0</span></code>
+#.</p>
+<blockquote>
+<div><p>Launch a GoCD agent docker container using the provided Dockerfile
+<code class="docutils literal notranslate"><span class="pre">configuration/Dockerfile.gocd-agent</span></code>, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker build -t gocd-agent --file configuration/Dockerfile.gocd-agent .
+docker run -d \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-e GO_SERVER_URL=http://$(docker inspect --format=&#39;{{(index (index .NetworkSettings.IPAddress))}}&#39; gocd):8153/go \
+--mount type=bind,source=/tmp,target=/tmp \
+gocd-agent
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Launch interface in web browser, at <code class="docutils literal notranslate"><span class="pre">http://localhost:8153</span></code></p></li>
+<li><p>In Admin -&gt; Config Repositories add this repository (url “<a class="reference external" href="https://github.com/bshurick/production-demo.git">https://github.com/bshurick/production-demo.git</a>”, branch ‘main’) with <code class="docutils literal notranslate"><span class="pre">pipeline/*.yaml</span></code> in “GoCD YAML files pattern”</p></li>
+<li><p>In Rules set Allow -&gt; Pipeline Group -&gt; prod-demo</p></li>
+<li><p>In ‘Agents’ tab select a running agent and hit ‘Enable’</p></li>
+</ol>
+<p>The <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command shown above assumes the <a class="reference external" href="#dataset">source data</a> exists in the /tmp directory where the agent is launched.</p>
+<p>Note that docker containers should be easy to deploy in cloud environments, with agents installed
+on each production environment and the GoCD server running on an independent “Pipelines” environment.</p>
+<p>It may be necessary to edit the GoCD Agent dockerfile if extra prereqs are added for your environment.</p>
+</section>
+</section>
+<section id="modules">
+<h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="train.html">Training Module</a><ul>
@@ -71,14 +254,14 @@ looking to improve their unit testing skills.</p>
 </li>
 </ul>
 </div>
+</section>
 <section id="indices-and-tables">
-<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</section>
 </section>
 
 
