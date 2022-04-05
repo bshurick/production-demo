@@ -38,6 +38,20 @@ via [Sphinx](https://www.sphinx-doc.org/en/master/)
 * `test_integ/` Integration tests for a live inference service
 * `Makefile`: Contains commands to build and test this package
 
+## What can I do with this package? 
+
+My thoughts for how this package might be useful: 
+* If this package has components you're not familiar with ->  
+  :notebook: Use it as a starting point for learning
+* If you have cool side project ideas, want to deploy a model to a website, etc ->  
+  :boom: Swap out the data and model and use it as a starting point for a hosted model service 
+* If you already know these concepts and have feedback ->  
+  :mega: Post feedback in [Issues](https://github.com/bshurick/production-demo/issues)!
+
+Things you might NOT want to do with this package:
+* :thumbsdown: Take it very seriously as a ready-to-ship code template (it's a starting point)
+* :thumbsdown: Assume all of these frameworks are the best option for you (it might not fit with your environment)
+
 ## How do I install and run this package?
 
 You may first need to install [Make](https://www.gnu.org/software/make/) on your machine, 

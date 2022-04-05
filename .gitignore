@@ -147,3 +147,4 @@ pyvenv.cfg
 
 # Docker build
 configuration/prod-demo-build*
+prod-demo-build.tar.gz
