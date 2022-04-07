@@ -163,3 +163,7 @@ Note that docker containers should be easy to deploy in cloud environments, with
 on each production environment and the GoCD server running on an independent "Pipelines" environment. 
 
 It may be necessary to edit the GoCD Agent dockerfile if extra prereqs are added for your environment. 
+
+> :warning: If installing on a Mac with Apple Silicon, or if there are other platform errors when 
+  attempting to run with docker, go to the [GoCD downloads page](https://www.gocd.org/download/) 
+  and follow instructions to build from downloads. 
