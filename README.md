@@ -138,7 +138,8 @@ The example CD pipeline includes:
 Pipeline yaml definition files for [GoCD](https://docs.gocd.org) 
 are provided in the `pipeline/` folder.  
 Follow these steps to start with the pipelines provided:  
-1. Launch a GoCD server docker container, e.g. `docker run -d -p8153:8153 --name "gocd" gocd/gocd-server:v22.1.0`
+1. Launch a GoCD server docker container, e.g.  
+  `docker run -d -p8153:8153 --name "gocd" gocd/gocd-server:v22.1.0`
 2. Launch a GoCD agent docker container using the provided Dockerfile
 `configuration/Dockerfile.gocd-agent`, e.g.: 
 ```
@@ -154,7 +155,9 @@ docker run -d \
 5. In Rules set Allow -> Pipeline Group -> prod-demo
 6. In 'Agents' tab select a running agent and hit 'Enable'
 
-The `docker run` command shown above assumes the [source data](#dataset) exists in the /tmp directory where the agent is launched.
+The `docker run` command shown above assumes the [source data](#dataset) exists in a compressed folder
+in the /tmp directory on whatever environment the agent is launched, e.g.:  
+`/tmp/house-prices-advanced-regression-techniques.zip`
 
 Note that docker containers should be easy to deploy in cloud environments, with agents installed 
 on each production environment and the GoCD server running on an independent "Pipelines" environment. 
