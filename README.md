@@ -155,9 +155,9 @@ docker run -d \
 5. In Rules set Allow -> Pipeline Group -> prod-demo
 6. In 'Agents' tab select a running agent and hit 'Enable'
 
-The `docker run` command shown above assumes the [source data](#dataset) exists in a compressed folder
-in the /tmp directory on whatever environment the agent is launched, e.g.:  
-`/tmp/house-prices-advanced-regression-techniques.zip`
+The `docker run` command shown above assumes the [source data](#dataset) `train.csv` file 
+exists in a compressed file in the /tmp directory on whatever environment the agent is launched, e.g.:  
+`/tmp/house-prices-advanced-regression-techniques.zip`. Only the train.csv file is necessary.
 
 Note that docker containers should be easy to deploy in cloud environments, with agents installed 
 on each production environment and the GoCD server running on an independent "Pipelines" environment. 
