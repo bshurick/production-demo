@@ -201,7 +201,8 @@ training is non-intensive in this simple example, so training is included in the
 are provided in the <code class="docutils literal notranslate"><span class="pre">pipeline/</span></code> folder.<span class="raw-html-m2r"><br></span>
 Follow these steps to start with the pipelines provided:</p>
 <ol class="arabic">
-<li><p>Launch a GoCD server docker container, e.g. <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-d</span> <span class="pre">-p8153:8153</span> <span class="pre">--name</span> <span class="pre">&quot;gocd&quot;</span> <span class="pre">gocd/gocd-server:v22.1.0</span></code></p></li>
+<li><p>Launch a GoCD server docker container, e.g.<span class="raw-html-m2r"><br></span>
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-d</span> <span class="pre">-p8153:8153</span> <span class="pre">--name</span> <span class="pre">&quot;gocd&quot;</span> <span class="pre">gocd/gocd-server:v22.1.0</span></code></p></li>
 <li><p>Launch a GoCD agent docker container using the provided Dockerfile
 <code class="docutils literal notranslate"><span class="pre">configuration/Dockerfile.gocd-agent</span></code>, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker build -t gocd-agent --file configuration/Dockerfile.gocd-agent .
@@ -218,10 +219,21 @@ gocd-agent
 <li><p>In Rules set Allow -&gt; Pipeline Group -&gt; prod-demo</p></li>
 <li><p>In ‘Agents’ tab select a running agent and hit ‘Enable’</p></li>
 </ol>
-<p>The <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command shown above assumes the <span class="xref std std-ref">source data</span> exists in the /tmp directory where the agent is launched.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command shown above assumes the <span class="xref std std-ref">source data</span> <code class="docutils literal notranslate"><span class="pre">train.csv</span></code> file
+exists in a compressed file in the /tmp directory on whatever environment the agent is launched, e.g.:<span class="raw-html-m2r"><br></span>
+<code class="docutils literal notranslate"><span class="pre">/tmp/house-prices-advanced-regression-techniques.zip</span></code>. Only the train.csv file is necessary.</p>
 <p>Note that docker containers should be easy to deploy in cloud environments, with agents installed
 on each production environment and the GoCD server running on an independent “Pipelines” environment.</p>
 <p>It may be necessary to edit the GoCD Agent dockerfile if extra prereqs are added for your environment.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">warning</dt>
+<dd class="field-odd"><p>If installing on a Mac with Apple Silicon, or if there are other platform errors when
+attempting to run with docker, go to the <a class="reference external" href="https://www.gocd.org/download/">GoCD downloads page</a>
+and follow instructions to build from downloads.</p>
+</dd>
+</dl>
+</div></blockquote>
 </section>
 </section>
 <section id="contents">
