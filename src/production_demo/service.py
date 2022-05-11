@@ -101,7 +101,7 @@ class InferenceHandler:
         """
         file_obj = StringIO()
         for pred in prediction:
-            file_obj.write(f"{pred:.4f}\n")
+            file_obj.write(f"output: {pred:.4f}\n")
         return file_obj.getvalue()
 
     def handle_request(self, request_obj, model):
